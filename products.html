@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - WoodworkbyTanishas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{font-family:'Manrope',sans-serif;background:#FDF9F4;color:#1F180D;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-5 bg-black text-white">
+<h1 class="text-2xl">WoodworkbyTanishas</h1>
+<div class="flex gap-6">
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+</div>
+</nav>
+
+<!-- PAGE TITLE -->
+<section class="text-center py-16">
+<h2 class="text-4xl mb-6">Our Furniture Collection</h2>
+
+<div class="flex justify-center gap-4 flex-wrap">
+<button onclick="filterProducts('all')" class="bg-black text-white px-4 py-2">All</button>
+<button onclick="filterProducts('Acacia')" class="bg-gray-300 px-4 py-2">Acacia</button>
+<button onclick="filterProducts('Iron')" class="bg-gray-300 px-4 py-2">Iron</button>
+<button onclick="filterProducts('Mango')" class="bg-gray-300 px-4 py-2">Mango</button>
+<button onclick="filterProducts('Line')" class="bg-gray-300 px-4 py-2">Line</button>
+</div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="max-w-7xl mx-auto px-6 pb-20">
+<div id="product-grid" class="grid md:grid-cols-3 gap-10"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white text-center py-6">
+© 2026 WoodworkbyTanishas
+</footer>
+
+<script>
+
+// PRODUCT DATA
+let products = [
+{id:1,name:"Acacia Dining Table",price:25000,category:"Acacia",image:"images/Acacia-Wood/acacia1.jpg"},
+{id:2,name:"Acacia Coffee Table",price:15000,category:"Acacia",image:"images/Acacia-Wood/acacia2.jpg"},
+{id:3,name:"Iron Console",price:18000,category:"Iron",image:"images/Iron-Range/iron1.jpg"},
+{id:4,name:"Iron Wall Shelf",price:12000,category:"Iron",image:"images/Iron-Range/iron2.jpg"},
+{id:5,name:"Mango Cabinet",price:30000,category:"Mango",image:"images/Mango-Wood/mango1.jpg"},
+{id:6,name:"Mango Sideboard",price:28000,category:"Mango",image:"images/Mango-Wood/mango2.jpg"},
+{id:7,name:"Line Bookshelf",price:14000,category:"Line",image:"images/Line-Range/line1.jpg"},
+{id:8,name:"Line TV Unit",price:22000,category:"Line",image:"images/Line-Range/line2.jpg"}
+];
+
+// RENDER PRODUCTS
+function renderProducts(list){
+let grid = document.getElementById("product-grid");
+grid.innerHTML = "";
+
+list.forEach(p=>{
+grid.innerHTML += `
+<div class="bg-white shadow-lg p-4">
+<img src="${p.image}" class="w-full h-60 object-cover">
+
+<h3 class="mt-4 text-xl">${p.name}</h3>
+<p>₹${p.price}</p>
+
+<div class="flex justify-between mt-4">
+<button onclick="addToCart(${p.id})"
+class="bg-black text-white px-3 py-2">
+Add To Cart
+</button>
+
+<a href="https://wa.me/919828288383?text=I want ${p.name}"
+class="bg-green-500 text-white px-3 py-2">
+WhatsApp
+</a>
+</div>
+
+<a href="product.html?id=${p.id}"
+class="block text-center mt-3 text-blue-600">
+View Details
+</a>
+
+</div>
+`;
+});
+}
+
+// FILTER FUNCTION
+function filterProducts(category){
+if(category === "all"){
+renderProducts(products);
+}else{
+let filtered = products.filter(p => p.category === category);
+renderProducts(filtered);
+}
+}
+
+// CART FUNCTION
+function addToCart(id){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let product = products.find(p => p.id === id);
+
+cart.push(product);
+localStorage.setItem("cart", JSON.stringify(cart));
+alert("Added to Cart");
+}
+
+renderProducts(products);
+
+</script>
+
+</body>
+</html>
