@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WoodWork by Tanisha's | Luxury Handcrafted Furniture</title>
-<meta name="description" content="Luxury handcrafted wooden furniture, modular kitchens, wardrobes & interiors. Premium craftsmanship by WoodWork by Tanisha's.">
+<title>WoodworkbyTanishas</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,148 +15,113 @@ tailwind.config = {
       colors: {
         wood:{
           50:'#FDFAF6',
-          200:'#E6DBC4',
           400:'#BFA06A',
           600:'#8A6B34',
           900:'#1F180D'
         }
-      },
-      fontFamily:{
-        serif:['Playfair Display','serif'],
-        sans:['Manrope','sans-serif']
       }
     }
   }
 }
 </script>
-
-<style>
-body{font-family:'Manrope',sans-serif;}
-h1,h2,h3{font-family:'Playfair Display',serif;}
-</style>
 </head>
 
-<body class="bg-wood-50 text-wood-900">
+<body class="bg-wood-50 text-wood-900 font-sans">
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="bg-gradient-to-r from-wood-900 to-wood-600 text-white text-center py-24">
-<h1 class="text-5xl mb-4">WoodWork by Tanisha's</h1>
-<p class="text-lg tracking-widest uppercase">Luxury Handcrafted Interiors</p>
+<h1 class="text-5xl mb-4 font-serif">WoodworkbyTanishas</h1>
+<p class="tracking-widest uppercase">Luxury Handcrafted Interiors</p>
 </section>
 
-<!-- ABOUT -->
-<section class="py-16 px-6 max-w-5xl mx-auto text-center">
-<h2 class="text-4xl mb-6">Crafting Wood. Creating Elegance.</h2>
-<p class="text-wood-600 text-lg leading-relaxed">
-We design and manufacture premium wooden furniture and interiors with timeless elegance and superior craftsmanship.
-From modular kitchens to luxury wardrobes, we deliver perfection in every detail.
-</p>
-</section>
-
-<!-- PRODUCTS -->
-<section class="py-16 px-8 bg-white">
-<h2 class="text-4xl text-center mb-12">Our Collection</h2>
-
-<div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-<!-- Product 1 -->
-<div class="shadow-xl p-6 border hover:border-wood-400 transition">
-<h3 class="text-2xl mb-3">Luxury Sofa Set</h3>
-<p class="mb-4 text-wood-600">Royal handcrafted wooden sofa with premium upholstery finish.</p>
-<a href="https://wa.me/919828288383?text=I%20want%20Luxury%20Sofa%20Set"
-class="bg-wood-600 text-white px-4 py-2 inline-block hover:bg-wood-900 transition">
-WhatsApp Inquiry
-</a>
-</div>
-
-<!-- Product 2 -->
-<div class="shadow-xl p-6 border hover:border-wood-400 transition">
-<h3 class="text-2xl mb-3">Modular Kitchen</h3>
-<p class="mb-4 text-wood-600">Elegant and modern kitchen solutions with superior wood finish.</p>
-<a href="https://wa.me/919828288383?text=I%20want%20Modular%20Kitchen"
-class="bg-wood-600 text-white px-4 py-2 inline-block hover:bg-wood-900 transition">
-WhatsApp Inquiry
-</a>
-</div>
-
-<!-- Product 3 -->
-<div class="shadow-xl p-6 border hover:border-wood-400 transition">
-<h3 class="text-2xl mb-3">Premium Wardrobe</h3>
-<p class="mb-4 text-wood-600">Luxury wardrobe designs with smooth finish & durable material.</p>
-<a href="https://wa.me/919828288383?text=I%20want%20Premium%20Wardrobe"
-class="bg-wood-600 text-white px-4 py-2 inline-block hover:bg-wood-900 transition">
-WhatsApp Inquiry
-</a>
-</div>
-
-</div>
-</section>
-
-  <!-- CATEGORY GALLERY -->
-<section class="py-20 bg-wood-50">
-<h2 class="text-4xl text-center mb-16">Our Wood Categories</h2>
+<!-- CATEGORIES -->
+<section class="py-20">
+<h2 class="text-4xl text-center mb-16 font-serif">Our Categories</h2>
 
 <div class="max-w-7xl mx-auto px-6 space-y-20">
 
+<!-- Category Template -->
+<script>
+function sendWhatsApp(product){
+  let number = "919828288383";
+  let url = "https://wa.me/" + number + "?text=I am interested in " + product;
+  window.open(url, '_blank');
+}
+</script>
+
 <!-- Acacia Wood -->
 <div>
-<h3 class="text-3xl mb-8 border-b pb-3">Acacia Wood</h3>
+<h3 class="text-3xl mb-8 border-b pb-3 font-serif">Acacia-Wood</h3>
 <div class="grid md:grid-cols-3 gap-8">
+
+<div>
 <img src="images/Acacia-Wood/acacia1.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Acacia-Wood/acacia2.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Acacia-Wood/acacia3.jpg" class="w-full h-72 object-cover shadow-lg">
-</div>
+<button onclick="sendWhatsApp('Acacia Wood Product 1')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
 </div>
 
-<!-- Mango Wood -->
 <div>
-<h3 class="text-3xl mb-8 border-b pb-3">Mango Wood</h3>
-<div class="grid md:grid-cols-3 gap-8">
-<img src="images/Mango-Wood/mango1.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Mango-Wood/mango2.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Mango-Wood/mango3.jpg" class="w-full h-72 object-cover shadow-lg">
+<img src="images/Acacia-Wood/acacia2.jpg" class="w-full h-72 object-cover shadow-lg">
+<button onclick="sendWhatsApp('Acacia Wood Product 2')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
+</div>
+
+<div>
+<img src="images/Acacia-Wood/acacia3.jpg" class="w-full h-72 object-cover shadow-lg">
+<button onclick="sendWhatsApp('Acacia Wood Product 3')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
+</div>
+
 </div>
 </div>
 
 <!-- Iron Range -->
 <div>
-<h3 class="text-3xl mb-8 border-b pb-3">Iron Range</h3>
+<h3 class="text-3xl mb-8 border-b pb-3 font-serif">Iron-Range</h3>
 <div class="grid md:grid-cols-3 gap-8">
+
+<div>
 <img src="images/Iron-Range/iron1.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Iron-Range/iron2.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Iron-Range/iron3.jpg" class="w-full h-72 object-cover shadow-lg">
+<button onclick="sendWhatsApp('Iron Range Product 1')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
+</div>
+
 </div>
 </div>
 
 <!-- Line Range -->
 <div>
-<h3 class="text-3xl mb-8 border-b pb-3">Line Range</h3>
+<h3 class="text-3xl mb-8 border-b pb-3 font-serif">Line-Range</h3>
 <div class="grid md:grid-cols-3 gap-8">
+
+<div>
 <img src="images/Line-Range/line1.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Line-Range/line2.jpg" class="w-full h-72 object-cover shadow-lg">
-<img src="images/Line-Range/line3.jpg" class="w-full h-72 object-cover shadow-lg">
+<button onclick="sendWhatsApp('Line Range Product 1')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
+</div>
+
+</div>
+</div>
+
+<!-- Mango Wood -->
+<div>
+<h3 class="text-3xl mb-8 border-b pb-3 font-serif">Mango-Wood</h3>
+<div class="grid md:grid-cols-3 gap-8">
+
+<div>
+<img src="images/Mango-Wood/mango1.jpg" class="w-full h-72 object-cover shadow-lg">
+<button onclick="sendWhatsApp('Mango Wood Product 1')" class="bg-wood-600 text-white w-full py-2 mt-2">Message on WhatsApp</button>
+</div>
+
 </div>
 </div>
 
 </div>
 </section>
 
-<!-- CONTACT -->
-<section class="py-16 text-center bg-wood-50">
-<h2 class="text-3xl mb-4">Contact Us</h2>
-<p class="mb-2">📞 9828288383</p>
-<p>📧 harshrawal4757@gmail.com</p>
-</section>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/919828288383"
-class="fixed bottom-6 right-6 bg-green-500 text-white px-5 py-3 shadow-xl hover:scale-105 transition">
-Chat on WhatsApp
-</a>
+<!-- LOGIN PAGE LINK -->
+<div class="text-center py-10">
+<a href="login.html" class="bg-wood-900 text-white px-6 py-3">Customer Login</a>
+</div>
 
 <!-- FOOTER -->
 <footer class="bg-wood-900 text-white text-center py-6">
-© 2026 WoodWork by Tanisha's. All Rights Reserved.
+© 2026 WoodworkbyTanishas
 </footer>
 
 </body>
