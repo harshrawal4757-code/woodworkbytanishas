@@ -5,102 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WoodworkbyTanishas</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body{font-family:'Manrope',sans-serif;background:#FDF9F4;color:#1F180D;}
-h1,h2,h3{font-family:'Playfair Display',serif;}
+body{
+  font-family:'Manrope',sans-serif;
+  background:#F9F6F1;
+  color:#1F180D;
+}
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+}
+.hero-bg{
+  background:url('images/Acacia-Wood/acacia1.jpg') center/cover no-repeat;
+}
+.overlay{
+  background:rgba(0,0,0,0.55);
+}
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-8 py-5 bg-black text-white">
-<h1 class="text-2xl">WoodworkbyTanishas</h1>
+<nav class="fixed w-full z-50 bg-white/70 backdrop-blur shadow-sm px-10 py-5 flex justify-between items-center">
+<h1 class="text-2xl tracking-wide">WoodworkbyTanishas</h1>
 
-<div class="flex gap-6">
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="cart.html">Cart</a>
+<div class="flex gap-8 text-sm uppercase tracking-wider">
+<a href="index.html" class="hover:text-[#C8A96A] transition">Home</a>
+<a href="products.html" class="hover:text-[#C8A96A] transition">Collection</a>
+<a href="cart.html" class="hover:text-[#C8A96A] transition">Cart</a>
 </div>
 </nav>
 
+<div class="h-24"></div>
+
 <!-- HERO -->
-<section class="text-center py-28 bg-gradient-to-r from-black to-[#8A6B34] text-white">
-<h2 class="text-5xl mb-4">Luxury Handcrafted Furniture</h2>
-<p class="text-lg">Premium Solid Wood & Designer Collection</p>
-<a href="products.html" class="mt-6 inline-block bg-white text-black px-6 py-3">
+<section class="hero-bg h-[80vh] flex items-center justify-center relative">
+<div class="overlay absolute inset-0"></div>
+
+<div class="relative text-center text-white max-w-3xl px-6 fade">
+<h2 class="text-6xl mb-6 leading-tight">
+Crafted for Timeless Living
+</h2>
+<p class="mb-8 text-lg">
+Luxury solid wood furniture designed for elegance & durability.
+</p>
+
+<a href="products.html"
+class="bg-white text-black px-8 py-3 uppercase tracking-wider hover:bg-[#C8A96A] hover:text-white transition">
 Explore Collection
 </a>
-</section>
-
-<!-- CATEGORIES -->
-<section class="py-20 max-w-6xl mx-auto px-6">
-<h2 class="text-4xl text-center mb-16">Our Categories</h2>
-
-<div class="grid md:grid-cols-4 gap-8 text-center">
-
-<a href="products.html?category=Acacia" class="bg-white shadow p-6 hover:shadow-xl">
-<h3 class="text-xl">Acacia Wood</h3>
-</a>
-
-<a href="products.html?category=Iron" class="bg-white shadow p-6 hover:shadow-xl">
-<h3 class="text-xl">Iron Range</h3>
-</a>
-
-<a href="products.html?category=Mango" class="bg-white shadow p-6 hover:shadow-xl">
-<h3 class="text-xl">Mango Wood</h3>
-</a>
-
-<a href="products.html?category=Line" class="bg-white shadow p-6 hover:shadow-xl">
-<h3 class="text-xl">Line Collection</h3>
-</a>
-
 </div>
 </section>
 
-<!-- FEATURED PRODUCTS -->
-<section class="py-20 bg-white">
-<h2 class="text-4xl text-center mb-16">Featured Products</h2>
+<!-- ABOUT SECTION -->
+<section class="py-24 text-center max-w-4xl mx-auto px-6 fade">
+<h2 class="text-4xl mb-6">Luxury in Every Detail</h2>
+<p class="text-gray-600 leading-relaxed">
+At WoodworkbyTanishas, we blend craftsmanship with contemporary design.
+Each piece is handcrafted using premium solid wood and durable materials,
+ensuring lasting elegance for your home.
+</p>
+</section>
 
-<div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
+<!-- FEATURED -->
+<section class="py-24 bg-white">
+<h2 class="text-4xl text-center mb-16 fade">Featured Collection</h2>
 
-<div class="shadow-lg p-4">
-<img src="images/Acacia-Wood/acacia1.jpg" class="w-full h-60 object-cover">
-<h3 class="mt-4 text-xl">Acacia Dining Table</h3>
+<div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto px-6">
+
+<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
+<img src="images/Acacia-Wood/acacia1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl mb-2">Acacia Dining Table</h3>
 <p>₹25,000</p>
-<a href="product.html?id=1" class="mt-3 inline-block bg-black text-white px-4 py-2">
-View Details
-</a>
+</div>
 </div>
 
-<div class="shadow-lg p-4">
-<img src="images/Iron-Range/iron1.jpg" class="w-full h-60 object-cover">
-<h3 class="mt-4 text-xl">Iron Console</h3>
+<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
+<img src="images/Iron-Range/iron1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl mb-2">Iron Console</h3>
 <p>₹18,000</p>
-<a href="product.html?id=2" class="mt-3 inline-block bg-black text-white px-4 py-2">
-View Details
-</a>
+</div>
 </div>
 
-<div class="shadow-lg p-4">
-<img src="images/Mango-Wood/mango1.jpg" class="w-full h-60 object-cover">
-<h3 class="mt-4 text-xl">Mango Cabinet</h3>
+<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
+<img src="images/Mango-Wood/mango1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl mb-2">Mango Cabinet</h3>
 <p>₹30,000</p>
-<a href="product.html?id=3" class="mt-3 inline-block bg-black text-white px-4 py-2">
-View Details
-</a>
+</div>
 </div>
 
 </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-black text-white text-center py-6">
-© 2026 WoodworkbyTanishas. All Rights Reserved.
+<footer class="bg-black text-white text-center py-12">
+<p class="tracking-widest uppercase text-sm">
+© 2026 WoodworkbyTanishas
+</p>
 </footer>
+
+<script>
+let elements=document.querySelectorAll(".fade");
+let observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+elements.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
