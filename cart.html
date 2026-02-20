@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Cart - WoodworkbyTanishas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
+<div class="flex justify-between items-center p-6 bg-black text-white">
+<h1 class="text-2xl">Your Cart</h1>
+<a href="index.html" class="bg-white text-black px-4 py-2">← Back</a>
+</div>
+
+<div class="max-w-5xl mx-auto p-6">
+
+<div id="cart-items" class="space-y-6"></div>
+
+<div class="mt-10 text-right">
+<h2 class="text-2xl font-bold">
+Total: ₹<span id="total">0</span>
+</h2>
+
+<button onclick="payNow()"
+class="bg-black text-white px-8 py-3 mt-4">
+Pay with Razorpay
+</button>
+</div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function loadCart() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    if(!item.qty) item.qty = 1;
+    total += item.price * item.qty;
+
+    container.innerHTML += `
+      <div class="bg-white p-6 shadow flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <img src="${item.image}" width="100" class="rounded">
+          <div>
+            <h3 class="text-lg font-semibold">${item.name}</h3>
+            <p>₹${item.price}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="decreaseQty(${index})"
+          class="bg-gray-300 px-3 py-1">-</button>
+
+          <span>${item.qty}</span>
+
+          <button onclick="increaseQty(${index})"
+          class="bg-gray-300 px-3 py-1">+</button>
+
+          <button onclick="removeItem(${index})"
+          class="bg-red-500 text-white px-3 py-1">
+          Remove
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total;
+}
+
+function increaseQty(index){
+  cart[index].qty += 1;
+  saveCart();
+  loadCart();
+}
+
+function decreaseQty(index){
+  if(cart[index].qty > 1){
+    cart[index].qty -= 1;
+  }
+  saveCart();
+  loadCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  saveCart();
+  loadCart();
+}
+
+function payNow(){
+  let totalAmount = 0;
+  cart.forEach(item => totalAmount += item.price * item.qty);
+
+  if(totalAmount === 0){
+    alert("Cart is empty!");
+    return;
+  }
+
+  var options = {
+    key: "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key
+    amount: totalAmount * 100,
+    currency: "INR",
+    name: "WoodworkbyTanishas",
+    description: "Furniture Purchase",
+    handler: function (response){
+      alert("Payment Successful!");
+      localStorage.removeItem("cart");
+      cart = [];
+      loadCart();
+    },
+    theme: {
+      color: "#000000"
+    }
+  };
+
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+}
+
+loadCart();
+</script>
+
+</body>
+</html>
