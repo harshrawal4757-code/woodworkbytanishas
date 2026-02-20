@@ -3,118 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Details - WoodworkbyTanishas</title>
+<title>Product Detail - WoodworkbyTanishas</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body{font-family:'Manrope',sans-serif;background:#FDF9F4;color:#1F180D;}
-h1,h2,h3{font-family:'Playfair Display',serif;}
+body{
+  font-family:'Manrope',sans-serif;
+  background:#F9F6F1;
+  color:#1F180D;
+}
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+}
+.gallery-thumb{
+  cursor:pointer;
+  transition:0.3s;
+}
+.gallery-thumb:hover{
+  transform:scale(1.05);
+}
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-8 py-5 bg-black text-white">
+<nav class="fixed w-full bg-white/80 backdrop-blur shadow-sm px-10 py-5 flex justify-between items-center z-50">
 <h1 class="text-2xl">WoodworkbyTanishas</h1>
-<div class="flex gap-6">
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="cart.html">Cart</a>
+
+<div class="flex gap-8 uppercase text-sm tracking-wider">
+<a href="index.html" class="hover:text-[#C8A96A]">Home</a>
+<a href="products.html" class="hover:text-[#C8A96A]">Collection</a>
+<a href="cart.html" class="hover:text-[#C8A96A]">Cart</a>
 </div>
 </nav>
 
+<div class="h-28"></div>
+
 <!-- PRODUCT SECTION -->
-<section class="max-w-6xl mx-auto px-6 py-16">
-<div id="product-container" class="grid md:grid-cols-2 gap-12"></div>
+<section class="max-w-7xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-16 fade">
+
+<!-- IMAGE GALLERY -->
+<div>
+<img id="main-image"
+src="https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=900&q=80"
+class="w-full h-[500px] object-cover shadow-lg rounded">
+
+<div class="grid grid-cols-3 gap-4 mt-6">
+
+<img src="https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=600&q=80"
+class="gallery-thumb h-32 object-cover rounded"
+onclick="changeImage(this.src)">
+
+<img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=600&q=80"
+class="gallery-thumb h-32 object-cover rounded"
+onclick="changeImage(this.src)">
+
+<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80"
+class="gallery-thumb h-32 object-cover rounded"
+onclick="changeImage(this.src)">
+
+</div>
+</div>
+
+<!-- PRODUCT INFO -->
+<div>
+
+<h1 class="text-5xl mb-6">Luxury Solid Wood Dining Table</h1>
+
+<p class="text-2xl mb-6">₹25,000</p>
+
+<p class="text-gray-600 mb-8 leading-relaxed">
+Crafted from premium solid wood, this luxury dining table blends timeless elegance
+with modern durability. Designed for contemporary interiors,
+it delivers both strength and sophistication.
+</p>
+
+<div class="flex gap-6 mb-8">
+<button onclick="addToCart()"
+class="bg-black text-white px-8 py-3 uppercase tracking-wider hover:bg-[#C8A96A] transition">
+Add to Cart
+</button>
+
+<a href="https://wa.me/919828288383?text=I am interested in Luxury Solid Wood Dining Table"
+class="border border-black px-8 py-3 uppercase tracking-wider hover:bg-black hover:text-white transition">
+WhatsApp Inquiry
+</a>
+</div>
+
+<ul class="text-gray-600 space-y-2">
+<li>✔ Premium Solid Wood</li>
+<li>✔ Custom Finish Available</li>
+<li>✔ 5 Year Structural Warranty</li>
+<li>✔ Pan India Delivery</li>
+</ul>
+
+</div>
 </section>
 
-<!-- RELATED PRODUCTS -->
-<section class="max-w-6xl mx-auto px-6 pb-20">
-<h2 class="text-3xl mb-8">Related Products</h2>
-<div id="related-products" class="grid md:grid-cols-3 gap-8"></div>
+<!-- RELATED SECTION -->
+<section class="py-20 bg-white">
+<h2 class="text-4xl text-center mb-16 fade">You May Also Like</h2>
+
+<div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto px-8">
+
+<div class="shadow-lg overflow-hidden fade">
+<img src="https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=800&q=80"
+class="w-full h-64 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl">Premium Console</h3>
+<p>₹18,000</p>
+</div>
+</div>
+
+<div class="shadow-lg overflow-hidden fade">
+<img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80"
+class="w-full h-64 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl">Modern Cabinet</h3>
+<p>₹30,000</p>
+</div>
+</div>
+
+<div class="shadow-lg overflow-hidden fade">
+<img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80"
+class="w-full h-64 object-cover hover:scale-105 transition duration-700">
+<div class="p-6 text-center">
+<h3 class="text-2xl">Designer Shelf</h3>
+<p>₹14,000</p>
+</div>
+</div>
+
+</div>
 </section>
 
-<footer class="bg-black text-white text-center py-6">
+<footer class="bg-black text-white text-center py-12">
 © 2026 WoodworkbyTanishas
 </footer>
 
 <script>
 
-// SAME PRODUCT DATA
-let products = [
-{id:1,name:"Acacia Dining Table",price:25000,category:"Acacia",image:"images/Acacia-Wood/acacia1.jpg",desc:"Premium handcrafted acacia wood dining table with natural finish."},
-{id:2,name:"Acacia Coffee Table",price:15000,category:"Acacia",image:"images/Acacia-Wood/acacia2.jpg",desc:"Elegant coffee table made from solid acacia wood."},
-{id:3,name:"Iron Console",price:18000,category:"Iron",image:"images/Iron-Range/iron1.jpg",desc:"Modern iron console with durable metal frame."},
-{id:4,name:"Iron Wall Shelf",price:12000,category:"Iron",image:"images/Iron-Range/iron2.jpg",desc:"Stylish iron wall shelf for contemporary interiors."},
-{id:5,name:"Mango Cabinet",price:30000,category:"Mango",image:"images/Mango-Wood/mango1.jpg",desc:"Luxury mango wood cabinet with smooth finish."},
-{id:6,name:"Mango Sideboard",price:28000,category:"Mango",image:"images/Mango-Wood/mango2.jpg",desc:"Spacious mango wood sideboard for premium homes."},
-{id:7,name:"Line Bookshelf",price:14000,category:"Line",image:"images/Line-Range/line1.jpg",desc:"Minimal line bookshelf with elegant structure."},
-{id:8,name:"Line TV Unit",price:22000,category:"Line",image:"images/Line-Range/line2.jpg",desc:"Modern TV unit with clean line design."}
-];
-
-// GET ID FROM URL
-let params = new URLSearchParams(window.location.search);
-let id = parseInt(params.get("id"));
-
-let product = products.find(p => p.id === id);
-
-let container = document.getElementById("product-container");
-
-if(product){
-container.innerHTML = `
-<div>
-<img src="${product.image}" class="w-full h-96 object-cover">
-</div>
-
-<div>
-<h1 class="text-4xl mb-4">${product.name}</h1>
-<p class="text-xl mb-4">₹${product.price}</p>
-<p class="mb-6">${product.desc}</p>
-
-<div class="flex gap-4">
-<button onclick="addToCart(${product.id})"
-class="bg-black text-white px-6 py-3">
-Add To Cart
-</button>
-
-<a href="https://wa.me/919828288383?text=I want ${product.name}"
-class="bg-green-500 text-white px-6 py-3">
-WhatsApp Inquiry
-</a>
-</div>
-</div>
-`;
+function changeImage(src){
+document.getElementById("main-image").src = src;
 }
 
-// ADD TO CART
-function addToCart(id){
+function addToCart(){
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let selected = products.find(p => p.id === id);
-cart.push(selected);
+cart.push({
+name:"Luxury Solid Wood Dining Table",
+price:25000,
+image:document.getElementById("main-image").src
+});
 localStorage.setItem("cart", JSON.stringify(cart));
 alert("Added to Cart");
 }
 
-// RELATED PRODUCTS
-let related = products.filter(p => p.category === product.category && p.id !== product.id);
-
-let relatedContainer = document.getElementById("related-products");
-
-related.forEach(p=>{
-relatedContainer.innerHTML += `
-<div class="bg-white shadow p-4">
-<img src="${p.image}" class="w-full h-48 object-cover">
-<h3 class="mt-3">${p.name}</h3>
-<p>₹${p.price}</p>
-<a href="product.html?id=${p.id}" class="text-blue-600">
-View
-</a>
-</div>
-`;
+let elements=document.querySelectorAll(".fade");
+let observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
 });
+});
+elements.forEach(el=>observer.observe(el));
 
 </script>
 
