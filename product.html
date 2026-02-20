@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details - WoodworkbyTanishas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{font-family:'Manrope',sans-serif;background:#FDF9F4;color:#1F180D;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-5 bg-black text-white">
+<h1 class="text-2xl">WoodworkbyTanishas</h1>
+<div class="flex gap-6">
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+</div>
+</nav>
+
+<!-- PRODUCT SECTION -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+<div id="product-container" class="grid md:grid-cols-2 gap-12"></div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="max-w-6xl mx-auto px-6 pb-20">
+<h2 class="text-3xl mb-8">Related Products</h2>
+<div id="related-products" class="grid md:grid-cols-3 gap-8"></div>
+</section>
+
+<footer class="bg-black text-white text-center py-6">
+© 2026 WoodworkbyTanishas
+</footer>
+
+<script>
+
+// SAME PRODUCT DATA
+let products = [
+{id:1,name:"Acacia Dining Table",price:25000,category:"Acacia",image:"images/Acacia-Wood/acacia1.jpg",desc:"Premium handcrafted acacia wood dining table with natural finish."},
+{id:2,name:"Acacia Coffee Table",price:15000,category:"Acacia",image:"images/Acacia-Wood/acacia2.jpg",desc:"Elegant coffee table made from solid acacia wood."},
+{id:3,name:"Iron Console",price:18000,category:"Iron",image:"images/Iron-Range/iron1.jpg",desc:"Modern iron console with durable metal frame."},
+{id:4,name:"Iron Wall Shelf",price:12000,category:"Iron",image:"images/Iron-Range/iron2.jpg",desc:"Stylish iron wall shelf for contemporary interiors."},
+{id:5,name:"Mango Cabinet",price:30000,category:"Mango",image:"images/Mango-Wood/mango1.jpg",desc:"Luxury mango wood cabinet with smooth finish."},
+{id:6,name:"Mango Sideboard",price:28000,category:"Mango",image:"images/Mango-Wood/mango2.jpg",desc:"Spacious mango wood sideboard for premium homes."},
+{id:7,name:"Line Bookshelf",price:14000,category:"Line",image:"images/Line-Range/line1.jpg",desc:"Minimal line bookshelf with elegant structure."},
+{id:8,name:"Line TV Unit",price:22000,category:"Line",image:"images/Line-Range/line2.jpg",desc:"Modern TV unit with clean line design."}
+];
+
+// GET ID FROM URL
+let params = new URLSearchParams(window.location.search);
+let id = parseInt(params.get("id"));
+
+let product = products.find(p => p.id === id);
+
+let container = document.getElementById("product-container");
+
+if(product){
+container.innerHTML = `
+<div>
+<img src="${product.image}" class="w-full h-96 object-cover">
+</div>
+
+<div>
+<h1 class="text-4xl mb-4">${product.name}</h1>
+<p class="text-xl mb-4">₹${product.price}</p>
+<p class="mb-6">${product.desc}</p>
+
+<div class="flex gap-4">
+<button onclick="addToCart(${product.id})"
+class="bg-black text-white px-6 py-3">
+Add To Cart
+</button>
+
+<a href="https://wa.me/919828288383?text=I want ${product.name}"
+class="bg-green-500 text-white px-6 py-3">
+WhatsApp Inquiry
+</a>
+</div>
+</div>
+`;
+}
+
+// ADD TO CART
+function addToCart(id){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let selected = products.find(p => p.id === id);
+cart.push(selected);
+localStorage.setItem("cart", JSON.stringify(cart));
+alert("Added to Cart");
+}
+
+// RELATED PRODUCTS
+let related = products.filter(p => p.category === product.category && p.id !== product.id);
+
+let relatedContainer = document.getElementById("related-products");
+
+related.forEach(p=>{
+relatedContainer.innerHTML += `
+<div class="bg-white shadow p-4">
+<img src="${p.image}" class="w-full h-48 object-cover">
+<h3 class="mt-3">${p.name}</h3>
+<p>₹${p.price}</p>
+<a href="product.html?id=${p.id}" class="text-blue-600">
+View
+</a>
+</div>
+`;
+});
+
+</script>
+
+</body>
+</html>
