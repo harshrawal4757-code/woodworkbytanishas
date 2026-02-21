@@ -5,80 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Collection - Wood Work by Tanisha</title>
 
+<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-body{
-  font-family:'Manrope',sans-serif;
-  background:#F5F1EB;
-  color:#2C2218;
-  scroll-behavior:smooth;
-}
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
-}
-
-/* Fade animation */
-.fade{
-  opacity:0;
-  transform:translateY(50px);
-  transition:1s ease;
-}
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* Product hover */
-.product-card{
-  transition:0.4s ease;
-}
-.product-card:hover{
-  transform:translateY(-6px);
-}
-.product-card img{
-  transition:0.6s ease;
-}
-.product-card:hover img{
-  transform:scale(1.08);
-}
-
-/* Cart Drawer */
-.cart-drawer{
-  position:fixed;
-  top:0;
-  right:-400px;
-  width:350px;
-  height:100%;
-  background:white;
-  box-shadow:-10px 0 40px rgba(0,0,0,0.1);
-  transition:0.4s ease;
-  z-index:100;
-  padding:20px;
-  overflow-y:auto;
-}
-.cart-drawer.open{
-  right:0;
-}
-
-/* WhatsApp button */
-.whatsapp-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:28px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-</style>
 </head>
 
 <body>
@@ -88,8 +17,8 @@ h1,h2,h3{
 <h1 class="text-2xl">Wood Work <span class="italic font-light">by Tanisha</span></h1>
 
 <div class="flex gap-8 uppercase text-sm tracking-wider items-center">
-<a href="index.html" class="hover:text-[#C8A96A]">Home</a>
-<a href="collection.html" class="hover:text-[#C8A96A]">Collection</a>
+<a href="index.html">Home</a>
+<a href="collection.html">Collection</a>
 <a href="#" onclick="toggleCart()" class="relative cursor-pointer">
 🛒
 <span id="cart-count" class="absolute -top-2 -right-3 bg-black text-white text-xs px-2 rounded-full">0</span>
@@ -99,59 +28,36 @@ h1,h2,h3{
 
 <div class="h-24"></div>
 
-<!-- HEADER -->
-<section class="text-center py-20 fade">
-<h2 class="text-5xl mb-6">Our Collection</h2>
-<p class="text-gray-600">Crafted for timeless elegance.</p>
-</section>
+<!-- FILTER BUTTONS -->
+<div class="flex justify-center gap-6 mb-10">
+<button onclick="filterProducts('all')" class="bg-black text-white px-4 py-2">All</button>
+<button onclick="filterProducts('wood')" class="bg-black text-white px-4 py-2">Wood</button>
+<button onclick="filterProducts('iron')" class="bg-black text-white px-4 py-2">Iron</button>
+</div>
 
 <!-- PRODUCTS -->
 <section class="max-w-7xl mx-auto px-12 pb-20">
 <div class="grid md:grid-cols-3 gap-12">
 
-<div class="product-card bg-white rounded-xl shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[350px] object-cover">
-
-<div class="p-6">
+<div class="product-card fade bg-white shadow-lg p-6" data-category="wood">
 <h3 class="text-2xl mb-2">Acacia Dining Table</h3>
 <p class="mb-4">₹25,000</p>
-
-<button onclick="addToCart('Acacia Dining Table',25000)"
-class="bg-black text-white px-6 py-2 hover:bg-[#C8A96A] transition">
-Add to Cart
-</button>
-</div>
+<button onclick="addToCart('Acacia Dining Table',25000)" class="bg-black text-white px-4 py-2">Add to Cart</button>
+<a href="product.html?id=1" class="block mt-3 text-sm underline">View Details</a>
 </div>
 
-<div class="product-card bg-white rounded-xl shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[350px] object-cover">
-
-<div class="p-6">
+<div class="product-card fade bg-white shadow-lg p-6" data-category="iron">
 <h3 class="text-2xl mb-2">Iron Console</h3>
 <p class="mb-4">₹18,000</p>
-
-<button onclick="addToCart('Iron Console',18000)"
-class="bg-black text-white px-6 py-2 hover:bg-[#C8A96A] transition">
-Add to Cart
-</button>
-</div>
+<button onclick="addToCart('Iron Console',18000)" class="bg-black text-white px-4 py-2">Add to Cart</button>
+<a href="product.html?id=2" class="block mt-3 text-sm underline">View Details</a>
 </div>
 
-<div class="product-card bg-white rounded-xl shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[350px] object-cover">
-
-<div class="p-6">
+<div class="product-card fade bg-white shadow-lg p-6" data-category="wood">
 <h3 class="text-2xl mb-2">Mango Cabinet</h3>
 <p class="mb-4">₹30,000</p>
-
-<button onclick="addToCart('Mango Cabinet',30000)"
-class="bg-black text-white px-6 py-2 hover:bg-[#C8A96A] transition">
-Add to Cart
-</button>
-</div>
+<button onclick="addToCart('Mango Cabinet',30000)" class="bg-black text-white px-4 py-2">Add to Cart</button>
+<a href="product.html?id=3" class="block mt-3 text-sm underline">View Details</a>
 </div>
 
 </div>
@@ -162,70 +68,25 @@ Add to Cart
 <h2 class="text-2xl mb-6">Your Cart</h2>
 <div id="cartItems"></div>
 <p class="mt-6 font-semibold">Total: ₹<span id="cartTotal">0</span></p>
-<button onclick="goToCart()"
-class="mt-6 bg-black text-white w-full py-2 hover:bg-[#C8A96A]">
+<button onclick="window.location.href='cart.html'"
+class="mt-6 bg-black text-white w-full py-2">
 Checkout
 </button>
 </div>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/919828288383" class="whatsapp-btn">
-💬
-</a>
+<script src="script.js"></script>
 
 <script>
-
-/* Animation */
-let elements=document.querySelectorAll(".fade");
-let observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
+function filterProducts(cat){
+let items=document.querySelectorAll(".product-card");
+items.forEach(item=>{
+if(cat==="all" || item.dataset.category===cat){
+item.style.display="block";
+}else{
+item.style.display="none";
 }
 });
-});
-elements.forEach(el=>observer.observe(el));
-
-/* Cart */
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function updateCart(){
-document.getElementById("cart-count").innerText=cart.length;
-
-let total=0;
-let html="";
-cart.forEach(item=>{
-total+=item.price;
-html+=`<p>${item.name} - ₹${item.price}</p>`;
-});
-document.getElementById("cartItems").innerHTML=html;
-document.getElementById("cartTotal").innerText=total;
-localStorage.setItem("cart",JSON.stringify(cart));
 }
-
-function addToCart(name,price){
-cart.push({name,price});
-updateCart();
-}
-
-function toggleCart(){
-document.getElementById("cartDrawer").classList.toggle("open");
-}
-
-function goToCart(){
-window.location.href="cart.html";
-}
-
-updateCart();
-
-  <div class="flex justify-center gap-6 mb-10">
-<button onclick="filterProducts('all')" class="btn-gold">All</button>
-<button onclick="filterProducts('wood')" class="btn-gold">Wood</button>
-<button onclick="filterProducts('iron')" class="btn-gold">Iron</button>
-</div>
-
-  <div class="product-card fade" data-category="wood">
-
 </script>
 
 </body>
