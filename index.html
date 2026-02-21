@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WoodworkbyTanishas</title>
+<title>Wood Work by Tanisha</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -11,26 +11,38 @@
 <style>
 body{
   font-family:'Manrope',sans-serif;
-  background:#F9F6F1;
-  color:#1F180D;
+  background:#F5F1EB;
+  color:#2C2218;
 }
 h1,h2,h3{
   font-family:'Playfair Display',serif;
 }
 .hero-bg{
-  background:url('images/Acacia-Wood/acacia1.jpg') center/cover no-repeat;
+  background:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
 }
 .overlay{
   background:rgba(0,0,0,0.55);
 }
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
+.category-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
 }
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
+.category-card img{
+  transition:0.6s ease;
+}
+.category-card:hover img{
+  transform:scale(1.1);
+}
+.category-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
 }
 </style>
 </head>
@@ -38,98 +50,160 @@ h1,h2,h3{
 <body>
 
 <!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-white/70 backdrop-blur shadow-sm px-10 py-5 flex justify-between items-center">
-<h1 class="text-2xl tracking-wide">WoodworkbyTanishas</h1>
+<nav class="absolute top-0 w-full z-50 px-12 py-6 flex justify-between items-center text-white">
+<h1 class="text-3xl font-semibold">Wood Work <span class="italic font-light">by Tanisha</span></h1>
 
-<div class="flex gap-8 text-sm uppercase tracking-wider">
-<a href="index.html" class="hover:text-[#C8A96A] transition">Home</a>
-<a href="products.html" class="hover:text-[#C8A96A] transition">Collection</a>
-<a href="cart.html" class="hover:text-[#C8A96A] transition">Cart</a>
+<div class="flex gap-10 uppercase text-sm tracking-wider">
+<a href="#" class="hover:text-[#C8A96A]">Home</a>
+<a href="#" class="hover:text-[#C8A96A]">About</a>
+<a href="#" class="hover:text-[#C8A96A]">Collection</a>
+<a href="#" class="hover:text-[#C8A96A]">Custom Order</a>
+<a href="#" class="hover:text-[#C8A96A]">Contact</a>
 </div>
 </nav>
 
-<div class="h-24"></div>
-
 <!-- HERO -->
-<section class="hero-bg h-[80vh] flex items-center justify-center relative">
+<section class="hero-bg h-screen flex items-center relative">
 <div class="overlay absolute inset-0"></div>
 
-<div class="relative text-center text-white max-w-3xl px-6 fade">
-<h2 class="text-6xl mb-6 leading-tight">
-Crafted for Timeless Living
-</h2>
-<p class="mb-8 text-lg">
-Luxury solid wood furniture designed for elegance & durability.
+<div class="relative text-white max-w-4xl px-16">
+<p class="uppercase tracking-widest mb-4 text-sm">
+Welcome to Wood Work by Tanisha
 </p>
 
-<a href="products.html"
+<h2 class="text-6xl leading-tight mb-6">
+Crafting Timeless <br>
+<span class="italic">Wooden Elegance</span>
+</h2>
+
+<p class="text-lg max-w-xl mb-10">
+Discover our exquisite collection of handcrafted furniture,
+designed to bring warmth and sophistication to your spaces.
+</p>
+
+<div class="flex gap-6">
+<a href="#"
 class="bg-white text-black px-8 py-3 uppercase tracking-wider hover:bg-[#C8A96A] hover:text-white transition">
-Explore Collection
+Shop Collection
+</a>
+
+<a href="#"
+class="border border-white px-8 py-3 uppercase tracking-wider hover:bg-white hover:text-black transition">
+Custom Order
 </a>
 </div>
+</div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section class="py-24 text-center max-w-4xl mx-auto px-6 fade">
-<h2 class="text-4xl mb-6">Luxury in Every Detail</h2>
-<p class="text-gray-600 leading-relaxed">
-At WoodworkbyTanishas, we blend craftsmanship with contemporary design.
-Each piece is handcrafted using premium solid wood and durable materials,
-ensuring lasting elegance for your home.
-</p>
+<!-- CATEGORY SECTION -->
+<section class="py-24 max-w-7xl mx-auto px-12">
+<div class="grid md:grid-cols-3 gap-12">
+
+<!-- Acacia -->
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=1000&q=80"
+class="w-full h-[450px] object-cover">
+
+<div class="category-overlay">
+<h3 class="text-3xl mb-4">Acacia Wood</h3>
+<a href="#" class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
+View Range
+</a>
+</div>
+</div>
+
+<!-- Iron -->
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80"
+class="w-full h-[450px] object-cover">
+
+<div class="category-overlay">
+<h3 class="text-3xl mb-4">Iron & Line Range</h3>
+<a href="#" class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
+View Range
+</a>
+</div>
+</div>
+
+<!-- Mango -->
+<div class="category-card">
+<img src="https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=1000&q=80"
+class="w-full h-[450px] object-cover">
+
+<div class="category-overlay">
+<h3 class="text-3xl mb-4">Mango Wood</h3>
+<a href="#" class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
+View Range
+</a>
+</div>
+</div>
+
+</div>
 </section>
 
-<!-- FEATURED -->
-<section class="py-24 bg-white">
-<h2 class="text-4xl text-center mb-16 fade">Featured Collection</h2>
+<!-- PROMISE SECTION -->
+<section class="py-24 bg-gradient-to-r from-[#1C1612] to-[#3B2C1F] text-white text-center">
+<h2 class="text-4xl mb-6">The Tanisha Promise</h2>
+<p class="mb-16 text-gray-300">Commitment to excellence at every stage of the journey.</p>
 
-<div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto px-12">
 
-<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
-<img src="images/Acacia-Wood/acacia1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl mb-2">Acacia Dining Table</h3>
-<p>₹25,000</p>
-</div>
+<div>
+<h3 class="text-xl mb-2">Quality Wood</h3>
+<p class="text-gray-400 text-sm">Sourced from sustainable, premium timber.</p>
 </div>
 
-<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
-<img src="images/Iron-Range/iron1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl mb-2">Iron Console</h3>
-<p>₹18,000</p>
-</div>
+<div>
+<h3 class="text-xl mb-2">Custom Design</h3>
+<p class="text-gray-400 text-sm">Tailored to fit your unique space perfectly.</p>
 </div>
 
-<div class="shadow-lg overflow-hidden hover:shadow-2xl transition fade">
-<img src="images/Mango-Wood/mango1.jpg" class="w-full h-80 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl mb-2">Mango Cabinet</h3>
-<p>₹30,000</p>
+<div>
+<h3 class="text-xl mb-2">Durable Finish</h3>
+<p class="text-gray-400 text-sm">Multi-layered protective coating for longevity.</p>
 </div>
+
+<div>
+<h3 class="text-xl mb-2">Pan India Delivery</h3>
+<p class="text-gray-400 text-sm">Safe and secure shipping to your doorstep.</p>
 </div>
 
 </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-black text-white text-center py-12">
-<p class="tracking-widest uppercase text-sm">
-© 2026 WoodworkbyTanishas
-</p>
-</footer>
+<footer class="bg-[#1C1612] text-white py-16">
+<div class="max-w-7xl mx-auto px-12 grid md:grid-cols-4 gap-10">
 
-<script>
-let elements=document.querySelectorAll(".fade");
-let observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-elements.forEach(el=>observer.observe(el));
-</script>
+<div>
+<h3 class="text-2xl mb-4">Wood Work by Tanisha</h3>
+<p class="text-gray-400 text-sm">
+Crafting timeless wooden elegance for your home and office.
+</p>
+</div>
+
+<div>
+<h4 class="mb-4">Quick Links</h4>
+<p class="text-gray-400 text-sm">Home</p>
+<p class="text-gray-400 text-sm">About</p>
+<p class="text-gray-400 text-sm">Collection</p>
+</div>
+
+<div>
+<h4 class="mb-4">Categories</h4>
+<p class="text-gray-400 text-sm">Living Room</p>
+<p class="text-gray-400 text-sm">Bedroom</p>
+<p class="text-gray-400 text-sm">Office</p>
+</div>
+
+<div>
+<h4 class="mb-4">Contact</h4>
+<p class="text-gray-400 text-sm">+91 98765 43210</p>
+<p class="text-gray-400 text-sm">hello@woodworkbytanisha.com</p>
+</div>
+
+</div>
+</footer>
 
 </body>
 </html>
