@@ -3,181 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Detail - WoodworkbyTanishas</title>
+<title>Product Detail</title>
 
+<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-body{
-  font-family:'Manrope',sans-serif;
-  background:#F9F6F1;
-  color:#1F180D;
-}
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
-}
-.gallery-thumb{
-  cursor:pointer;
-  transition:0.3s;
-}
-.gallery-thumb:hover{
-  transform:scale(1.05);
-}
-.fade{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s;
-}
-.fade.show{
-  opacity:1;
-  transform:translateY(0);
-}
-</style>
 </head>
 
-<body>
+<body onload="loadProduct()">
 
 <!-- NAVBAR -->
 <nav class="fixed w-full bg-white/80 backdrop-blur shadow-sm px-10 py-5 flex justify-between items-center z-50">
-<h1 class="text-2xl">WoodworkbyTanishas</h1>
+<h1 class="text-2xl">Wood Work <span class="italic font-light">by Tanisha</span></h1>
 
-<div class="flex gap-8 uppercase text-sm tracking-wider">
-<a href="index.html" class="hover:text-[#C8A96A]">Home</a>
-<a href="products.html" class="hover:text-[#C8A96A]">Collection</a>
-<a href="cart.html" class="hover:text-[#C8A96A]">Cart</a>
+<div class="flex gap-8 uppercase text-sm tracking-wider items-center">
+<a href="index.html">Home</a>
+<a href="collection.html">Collection</a>
+<a href="cart.html" class="relative">
+🛒
+<span id="cart-count"
+class="absolute -top-2 -right-3 bg-black text-white text-xs px-2 rounded-full">
+0
+</span>
+</a>
 </div>
 </nav>
 
 <div class="h-28"></div>
 
-<!-- PRODUCT SECTION -->
-<section class="max-w-7xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-16 fade">
+<section class="max-w-7xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-16">
 
-<!-- IMAGE GALLERY -->
 <div>
-<img id="main-image"
-src="https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=900&q=80"
+<img id="productImage"
 class="w-full h-[500px] object-cover shadow-lg rounded">
-
-<div class="grid grid-cols-3 gap-4 mt-6">
-
-<img src="https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=600&q=80"
-class="gallery-thumb h-32 object-cover rounded"
-onclick="changeImage(this.src)">
-
-<img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=600&q=80"
-class="gallery-thumb h-32 object-cover rounded"
-onclick="changeImage(this.src)">
-
-<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=600&q=80"
-class="gallery-thumb h-32 object-cover rounded"
-onclick="changeImage(this.src)">
-
-</div>
 </div>
 
-<!-- PRODUCT INFO -->
 <div>
+<h1 id="productName" class="text-5xl mb-6"></h1>
+<p id="productPrice" class="text-2xl mb-6"></p>
 
-<h1 class="text-5xl mb-6">Luxury Solid Wood Dining Table</h1>
-
-<p class="text-2xl mb-6">₹25,000</p>
-
-<p class="text-gray-600 mb-8 leading-relaxed">
-Crafted from premium solid wood, this luxury dining table blends timeless elegance
-with modern durability. Designed for contemporary interiors,
-it delivers both strength and sophistication.
+<p class="text-gray-600 mb-8">
+Premium handcrafted furniture designed for timeless interiors.
 </p>
 
-<div class="flex gap-6 mb-8">
-<button onclick="addToCart()"
+<button id="addBtn"
 class="bg-black text-white px-8 py-3 uppercase tracking-wider hover:bg-[#C8A96A] transition">
 Add to Cart
 </button>
 
-<a href="https://wa.me/919828288383?text=I am interested in Luxury Solid Wood Dining Table"
-class="border border-black px-8 py-3 uppercase tracking-wider hover:bg-black hover:text-white transition">
+<a id="whatsappBtn"
+class="ml-4 border border-black px-8 py-3 uppercase tracking-wider hover:bg-black hover:text-white transition">
 WhatsApp Inquiry
 </a>
 </div>
 
-<ul class="text-gray-600 space-y-2">
-<li>✔ Premium Solid Wood</li>
-<li>✔ Custom Finish Available</li>
-<li>✔ 5 Year Structural Warranty</li>
-<li>✔ Pan India Delivery</li>
-</ul>
-
-</div>
-</section>
-
-<!-- RELATED SECTION -->
-<section class="py-20 bg-white">
-<h2 class="text-4xl text-center mb-16 fade">You May Also Like</h2>
-
-<div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto px-8">
-
-<div class="shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=800&q=80"
-class="w-full h-64 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl">Premium Console</h3>
-<p>₹18,000</p>
-</div>
-</div>
-
-<div class="shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80"
-class="w-full h-64 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl">Modern Cabinet</h3>
-<p>₹30,000</p>
-</div>
-</div>
-
-<div class="shadow-lg overflow-hidden fade">
-<img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80"
-class="w-full h-64 object-cover hover:scale-105 transition duration-700">
-<div class="p-6 text-center">
-<h3 class="text-2xl">Designer Shelf</h3>
-<p>₹14,000</p>
-</div>
-</div>
-
-</div>
 </section>
 
 <footer class="bg-black text-white text-center py-12">
-© 2026 WoodworkbyTanishas
+© 2026 Wood Work by Tanisha
 </footer>
+
+<script src="script.js"></script>
 
 <script>
 
-function changeImage(src){
-document.getElementById("main-image").src = src;
-}
-
-function addToCart(){
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-cart.push({
-name:"Luxury Solid Wood Dining Table",
+const products = {
+1:{
+name:"Acacia Dining Table",
 price:25000,
-image:document.getElementById("main-image").src
-});
-localStorage.setItem("cart", JSON.stringify(cart));
-alert("Added to Cart");
+image:"https://images.unsplash.com/photo-1616628182507-3c3b0e9f7e79?auto=format&fit=crop&w=1000&q=80"
+},
+2:{
+name:"Iron Console",
+price:18000,
+image:"https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=1000&q=80"
+},
+3:{
+name:"Mango Cabinet",
+price:30000,
+image:"https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=1000&q=80"
 }
+};
 
-let elements=document.querySelectorAll(".fade");
-let observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
+function loadProduct(){
+const params=new URLSearchParams(window.location.search);
+const id=params.get("id");
+
+if(products[id]){
+document.getElementById("productName").innerText=products[id].name;
+document.getElementById("productPrice").innerText="₹"+products[id].price;
+document.getElementById("productImage").src=products[id].image;
+
+document.getElementById("addBtn").onclick=function(){
+addToCart(products[id].name,products[id].price);
+};
+
+document.getElementById("whatsappBtn").href=
+"https://wa.me/919828288383?text=I am interested in "+products[id].name;
 }
-});
-});
-elements.forEach(el=>observer.observe(el));
+}
 
 </script>
 
