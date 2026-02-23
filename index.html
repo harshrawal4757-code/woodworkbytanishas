@@ -61,7 +61,6 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -73,7 +72,6 @@
             border-radius: 4px;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -90,28 +88,6 @@
             to { opacity: 1; }
         }
 
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideOutRight {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-        }
-
         @keyframes shimmer {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
@@ -120,11 +96,6 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse-gold {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 98, 0.4); }
-            50% { box-shadow: 0 0 0 15px rgba(201, 169, 98, 0); }
         }
 
         .animate-fade-in-up {
@@ -146,14 +117,12 @@
             transform: translateY(0);
         }
 
-        /* Hero Parallax */
         .hero-bg {
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
         }
 
-        /* Gold Shimmer Button */
         .btn-gold {
             background: linear-gradient(90deg, var(--accent) 0%, #E8D5A3 50%, var(--accent) 100%);
             background-size: 200% 100%;
@@ -166,7 +135,6 @@
             box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
         }
 
-        /* Card Hover Effects */
         .product-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -184,7 +152,6 @@
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Cart Drawer */
         .cart-drawer {
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -194,7 +161,6 @@
             transform: translateX(0);
         }
 
-        /* Overlay */
         .overlay {
             opacity: 0;
             visibility: hidden;
@@ -206,7 +172,6 @@
             visibility: visible;
         }
 
-        /* Page Transitions */
         .page {
             display: none;
             opacity: 0;
@@ -217,7 +182,6 @@
             animation: fadeIn 0.5s ease-out forwards;
         }
 
-        /* Image Gallery */
         .gallery-thumb {
             transition: all 0.3s ease;
             opacity: 0.6;
@@ -229,7 +193,6 @@
             border-color: var(--accent);
         }
 
-        /* Floating Elements */
         .float-element {
             animation: float 6s ease-in-out infinite;
         }
@@ -242,7 +205,6 @@
             animation-delay: -4s;
         }
 
-        /* Input Focus */
         .input-field {
             transition: all 0.3s ease;
             border: 1px solid var(--border);
@@ -253,7 +215,6 @@
             box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
         }
 
-        /* Category Filter */
         .category-btn {
             position: relative;
             transition: all 0.3s ease;
@@ -275,7 +236,6 @@
             width: 100%;
         }
 
-        /* Navbar */
         .navbar {
             transition: all 0.3s ease;
         }
@@ -286,7 +246,6 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
-        /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -295,7 +254,6 @@
             }
         }
 
-        /* Grain Texture Overlay */
         .grain-overlay {
             position: fixed;
             top: 0;
@@ -308,21 +266,14 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Decorative Elements */
         .deco-line {
             width: 60px;
             height: 2px;
             background: linear-gradient(90deg, var(--accent), transparent);
         }
-
-        /* WhatsApp Button Pulse */
-        .whatsapp-pulse {
-            animation: pulse-gold 2s infinite;
-        }
     </style>
 </head>
 <body>
-    <!-- Grain Overlay -->
     <div class="grain-overlay"></div>
 
     <!-- Navigation -->
@@ -360,7 +311,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-cream border-t border-border shadow-lg">
             <div class="flex flex-col p-6 gap-4">
                 <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="text-charcoal hover:text-gold transition-colors font-medium py-2">Home</a>
@@ -371,18 +321,15 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main id="mainContent">
         <!-- HOME PAGE -->
         <div id="homePage" class="page active">
             <!-- Hero Section -->
             <section class="relative min-h-screen flex items-center overflow-hidden">
-                <!-- Background with gradient overlay -->
                 <div class="absolute inset-0 hero-bg" style="background: linear-gradient(135deg, #5D3A1A 0%, #8B5A2B 50%, #C9A962 100%);">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream"></div>
                 </div>
 
-                <!-- Floating decorative elements -->
                 <div class="absolute top-20 right-10 w-32 h-32 rounded-full bg-gold/10 float-element blur-2xl"></div>
                 <div class="absolute bottom-40 left-20 w-48 h-48 rounded-full bg-wood/10 float-element blur-3xl"></div>
                 <div class="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-goldLight/10 float-element blur-xl"></div>
@@ -415,16 +362,11 @@
                             <div class="relative aspect-square max-w-lg mx-auto">
                                 <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-wood/20 rounded-3xl transform rotate-6"></div>
                                 <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop" alt="Luxury Furniture" class="relative rounded-3xl shadow-2xl w-full h-full object-cover">
-                                <div class="absolute -bottom-6 -left-6 bg-cream p-6 rounded-2xl shadow-xl">
-                                    <p class="text-sm text-muted mb-1">Starting from</p>
-                                    <p class="font-display text-3xl font-bold text-woodDark">Rs 15,000</p>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Scroll indicator -->
                 <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/60">
                     <span class="text-sm tracking-widest">SCROLL</span>
                     <div class="w-px h-12 bg-gradient-to-b from-cream/60 to-transparent"></div>
@@ -504,10 +446,10 @@
                         
                         <div class="reveal">
                             <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Our Story</p>
-                            <h2 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Crafting Excellence Since 2015</h2>
+                            <h2 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Crafting Excellence Since 2021</h2>
                             <div class="deco-line mb-8 bg-gold"></div>
                             <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
-                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur. We have our own in-house production facility and have been serving the furniture industry since 2015.
+                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur. We have our own in-house production facility and have been serving the furniture industry since 2021.
                             </p>
                             <p class="text-charcoal/80 text-lg leading-relaxed mb-8">
                                 We specialize in handcrafted wooden furniture including Acacia Wood, Mango Wood, Iron Range, and modern Line Range collections.
@@ -610,7 +552,7 @@
                                 
                                 <div class="flex flex-wrap gap-4">
                                     <a href="https://wa.me/9198288383?text=Hello! I'm interested in your furniture collection." target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-full font-semibold transition-all">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                                         WhatsApp Us
                                     </a>
                                     <a href="mailto:mahadevart60@gmail.com" class="inline-flex items-center gap-3 border-2 border-cream text-cream hover:bg-cream hover:text-woodDark px-6 py-4 rounded-full font-semibold transition-all">
@@ -669,7 +611,7 @@
                                 </div>
                                 <span class="font-display text-xl font-semibold text-cream">WoodWorkbyTanishas</span>
                             </div>
-                            <p class="text-cream/60 max-w-md mb-6">Premium handcrafted furniture from Jodhpur. Delivering timeless craftsmanship with premium quality materials and elegant designs since 2015.</p>
+                            <p class="text-cream/60 max-w-md mb-6">Premium handcrafted furniture from Jodhpur. Delivering timeless craftsmanship with premium quality materials and elegant designs since 2021.</p>
                             <p class="text-gold italic font-display text-lg">"From Wood To WoW"</p>
                         </div>
 
@@ -769,7 +711,6 @@
                         <div class="deco-line mx-auto bg-gold"></div>
                     </div>
 
-                    <!-- Category Filters -->
                     <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
                         <button onclick="filterProducts('all')" class="category-btn px-6 py-3 text-charcoal font-medium active" data-category="all">All Products</button>
                         <button onclick="filterProducts('acacia')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="acacia">Acacia Wood</button>
@@ -778,9 +719,7 @@
                         <button onclick="filterProducts('mango')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="mango">Mango Wood</button>
                     </div>
 
-                    <!-- Products Grid -->
                     <div id="productsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Products will be rendered here -->
                     </div>
                 </div>
             </section>
@@ -791,14 +730,11 @@
             <section class="pt-32 pb-24 bg-cream min-h-screen">
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div id="productDetail">
-                        <!-- Product details will be rendered here -->
                     </div>
 
-                    <!-- Related Products -->
                     <div class="mt-24">
                         <h2 class="font-display text-3xl font-bold text-woodDark mb-8">You May Also Like</h2>
                         <div id="relatedProducts" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <!-- Related products will be rendered here -->
                         </div>
                     </div>
                 </div>
@@ -810,12 +746,11 @@
             <section class="pt-32 pb-24 bg-cream min-h-screen">
                 <div class="max-w-5xl mx-auto px-6 lg:px-12">
                     <div class="text-center mb-12 reveal">
-                        <h1 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Your Cart</h1>
+                        <h1 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Your Inquiry List</h1>
                         <div class="deco-line mx-auto bg-gold"></div>
                     </div>
 
                     <div id="cartContent">
-                        <!-- Cart items will be rendered here -->
                     </div>
                 </div>
             </section>
@@ -823,7 +758,6 @@
 
         <!-- ABOUT PAGE -->
         <div id="aboutPage" class="page">
-            <!-- Hero -->
             <section class="pt-32 pb-16 bg-woodDark relative overflow-hidden">
                 <div class="absolute inset-0 opacity-10">
                     <div class="absolute top-1/4 left-1/4 w-64 h-64 border border-gold/30 rounded-full"></div>
@@ -833,11 +767,10 @@
                 <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative">
                     <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4 reveal">About Us</p>
                     <h1 class="font-display text-4xl md:text-6xl font-bold text-cream mb-6 reveal">Our Story</h1>
-                    <p class="text-cream/80 text-xl max-w-2xl mx-auto reveal">Crafting timeless furniture pieces that transform houses into homes since 2015.</p>
+                    <p class="text-cream/80 text-xl max-w-2xl mx-auto reveal">Crafting timeless furniture pieces that transform houses into homes since 2021.</p>
                 </div>
             </section>
 
-            <!-- Story Section -->
             <section class="py-24 bg-cream">
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -851,7 +784,7 @@
                             <div class="deco-line mb-8 bg-gold"></div>
 
                             <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
-                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur, the cultural heart of Rajasthan. We have our own in-house production facility and have been serving the furniture industry since 2015.
+                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur. We have our own in-house production facility and have been serving the furniture industry since 2021.
                             </p>
 
                             <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
@@ -866,7 +799,6 @@
                 </div>
             </section>
 
-            <!-- Values -->
             <section class="py-24 bg-beige">
                 <div class="max-w-7xl mx-auto px-6 lg:px-12">
                     <div class="text-center mb-16 reveal">
@@ -903,7 +835,6 @@
                 </div>
             </section>
 
-            <!-- Contact -->
             <section class="py-24 bg-woodDark">
                 <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
                     <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4 reveal">Get In Touch</p>
@@ -929,37 +860,20 @@
     <div id="cartOverlay" class="overlay fixed inset-0 bg-ebony/50 z-50" onclick="toggleCart()"></div>
     <div id="cartDrawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-cream z-50 shadow-2xl flex flex-col">
         <div class="p-6 border-b border-border flex items-center justify-between">
-            <h2 class="font-display text-2xl font-semibold text-woodDark">Your Cart</h2>
+            <h2 class="font-display text-2xl font-semibold text-woodDark">Your Inquiry List</h2>
             <button onclick="toggleCart()" class="p-2 hover:bg-beige rounded-full transition-colors" aria-label="Close cart">
                 <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
 
         <div id="cartDrawerItems" class="flex-1 overflow-y-auto p-6">
-            <!-- Cart items will be rendered here -->
         </div>
 
         <div id="cartDrawerFooter" class="p-6 border-t border-border hidden">
-            <div class="space-y-3 mb-6">
-                <div class="flex justify-between text-charcoal/70">
-                    <span>Subtotal</span>
-                    <span id="drawerSubtotal">Rs 0</span>
-                </div>
-                <div class="flex justify-between text-charcoal/70">
-                    <span>GST (18%)</span>
-                    <span id="drawerGst">Rs 0</span>
-                </div>
-                <div class="flex justify-between text-lg font-semibold text-woodDark pt-3 border-t border-border">
-                    <span>Total</span>
-                    <span id="drawerTotal">Rs 0</span>
-                </div>
-            </div>
             <div class="space-y-3">
-                <button onclick="initiatePayment()" class="btn-gold w-full py-4 rounded-xl text-ebony font-semibold">
-                    Checkout with Razorpay
-                </button>
-                <a id="drawerWhatsApp" href="#" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
-                    Order via WhatsApp
+                <a id="drawerWhatsApp" href="#" target="_blank" class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Send Inquiry via WhatsApp
                 </a>
             </div>
         </div>
@@ -972,23 +886,19 @@
                 <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div id="modalContent">
-                <!-- Modal content will be rendered here -->
             </div>
         </div>
     </div>
 
     <script>
-        // Initialize variables first
         let cart = JSON.parse(localStorage.getItem('woodworkCart')) || [];
         let currentProduct = null;
 
-        // Products Data
         const products = [
             {
                 id: 1,
                 name: "Royal Acacia Dining Table",
                 category: "acacia",
-                price: 45000,
                 image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
@@ -1001,7 +911,6 @@
                 id: 2,
                 name: "Industrial Iron Bookshelf",
                 category: "iron",
-                price: 28000,
                 image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&h=600&fit=crop",
@@ -1014,7 +923,6 @@
                 id: 3,
                 name: "Minimalist Line Coffee Table",
                 category: "line",
-                price: 18000,
                 image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop",
@@ -1027,7 +935,6 @@
                 id: 4,
                 name: "Mango Wood Sideboard",
                 category: "mango",
-                price: 35000,
                 image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
@@ -1040,7 +947,6 @@
                 id: 5,
                 name: "Acacia Wood Bed Frame",
                 category: "acacia",
-                price: 65000,
                 image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop",
@@ -1053,7 +959,6 @@
                 id: 6,
                 name: "Iron Bar Stool Set",
                 category: "iron",
-                price: 22000,
                 image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
@@ -1066,7 +971,6 @@
                 id: 7,
                 name: "Line Console Table",
                 category: "line",
-                price: 15000,
                 image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop",
@@ -1079,7 +983,6 @@
                 id: 8,
                 name: "Mango Wood Dining Chairs (Set of 4)",
                 category: "mango",
-                price: 32000,
                 image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
@@ -1092,7 +995,6 @@
                 id: 9,
                 name: "Acacia TV Unit",
                 category: "acacia",
-                price: 28000,
                 image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
                 images: [
                     "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
@@ -1103,7 +1005,6 @@
             }
         ];
 
-        // Navigation Functions
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(page + 'Page').classList.add('active');
@@ -1123,7 +1024,6 @@
             menu.classList.toggle('hidden');
         }
 
-        // Product Functions
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('productsGrid');
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
@@ -1139,16 +1039,15 @@
                     <div class="p-6">
                         <h3 class="font-display text-xl font-semibold text-woodDark mb-2">${product.name}</h3>
                         <p class="text-charcoal/60 text-sm mb-4 line-clamp-2">${product.description}</p>
-                        <p class="font-display text-2xl font-bold text-gold mb-4">Rs ${product.price.toLocaleString()}</p>
                         <div class="flex flex-wrap gap-2">
                             <button onclick="addToCart(${product.id})" class="flex-1 py-3 bg-wood hover:bg-woodDark text-cream rounded-lg font-medium transition-colors">
-                                Add to Cart
+                                Add to Inquiry
                             </button>
                             <button onclick="openProductModal(${product.id})" class="px-4 py-3 border border-border hover:border-gold hover:text-gold rounded-lg transition-colors">
                                 View
                             </button>
-                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)} (Rs ${product.price.toLocaleString()}). Please share more details." target="_blank" class="px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)}. Please share more details." target="_blank" class="px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                             </a>
                         </div>
                     </div>
@@ -1170,7 +1069,6 @@
             setTimeout(() => filterProducts(category), 100);
         }
 
-        // Product Modal
         function openProductModal(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -1196,7 +1094,6 @@
                     <div class="p-8">
                         <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full uppercase mb-4">${product.category}</span>
                         <h2 class="font-display text-3xl font-bold text-woodDark mb-4">${product.name}</h2>
-                        <p class="font-display text-3xl font-bold text-gold mb-6">Rs ${product.price.toLocaleString()}</p>
                         <p class="text-charcoal/70 leading-relaxed mb-6">${product.description}</p>
                         
                         <div class="mb-6">
@@ -1208,9 +1105,9 @@
 
                         <div class="flex flex-wrap gap-3">
                             <button onclick="addToCart(${product.id}); closeProductModal();" class="flex-1 py-4 bg-wood hover:bg-woodDark text-cream rounded-xl font-semibold transition-colors">
-                                Add to Cart
+                                Add to Inquiry List
                             </button>
-                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)} (Rs ${product.price.toLocaleString()}). Please share more details." target="_blank" class="flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-colors">
+                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)}. Please share more details." target="_blank" class="flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                                 WhatsApp
                             </a>
@@ -1236,7 +1133,6 @@
             });
         }
 
-        // Cart Functions
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -1284,13 +1180,6 @@
             renderCartDrawer();
         }
 
-        function getCartTotals() {
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const gst = Math.round(subtotal * 0.18);
-            const total = subtotal + gst;
-            return { subtotal, gst, total };
-        }
-
         function renderCartDrawer() {
             const drawerItems = document.getElementById('cartDrawerItems');
             const drawerFooter = document.getElementById('cartDrawerFooter');
@@ -1299,7 +1188,7 @@
                 drawerItems.innerHTML = `
                     <div class="text-center py-12">
                         <svg class="w-16 h-16 text-charcoal/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        <p class="text-charcoal/60 mb-4">Your cart is empty</p>
+                        <p class="text-charcoal/60 mb-4">Your inquiry list is empty</p>
                         <button onclick="toggleCart(); navigateTo('collection');" class="text-gold font-medium hover:underline">Browse Collection</button>
                     </div>
                 `;
@@ -1307,14 +1196,11 @@
                 return;
             }
 
-            const { subtotal, gst, total } = getCartTotals();
-
             drawerItems.innerHTML = cart.map(item => `
                 <div class="flex gap-4 mb-4 pb-4 border-b border-border">
                     <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover">
                     <div class="flex-1">
                         <h4 class="font-medium text-woodDark text-sm">${item.name}</h4>
-                        <p class="text-gold font-semibold">Rs ${item.price.toLocaleString()}</p>
                         <div class="flex items-center gap-2 mt-2">
                             <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 rounded border border-border hover:border-gold flex items-center justify-center">-</button>
                             <span class="w-8 text-center">${item.quantity}</span>
@@ -1325,11 +1211,7 @@
                 </div>
             `).join('');
 
-            document.getElementById('drawerSubtotal').textContent = `Rs ${subtotal.toLocaleString()}`;
-            document.getElementById('drawerGst').textContent = `Rs ${gst.toLocaleString()}`;
-            document.getElementById('drawerTotal').textContent = `Rs ${total.toLocaleString()}`;
-
-            const orderText = encodeURIComponent(`Hi! I'd like to place an order:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}: Rs ${(item.price * item.quantity).toLocaleString()}`).join('\n')}\n\nSubtotal: Rs ${subtotal.toLocaleString()}\nGST (18%): Rs ${gst.toLocaleString()}\nTotal: Rs ${total.toLocaleString()}`);
+            const orderText = encodeURIComponent(`Hi! I'd like to inquire about the following items:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}`).join('\n')}\n\nPlease share pricing and availability.`);
             document.getElementById('drawerWhatsApp').href = `https://wa.me/9198288383?text=${orderText}`;
 
             drawerFooter.classList.remove('hidden');
@@ -1342,15 +1224,13 @@
                 content.innerHTML = `
                     <div class="text-center py-16 reveal">
                         <svg class="w-24 h-24 text-charcoal/20 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        <h2 class="font-display text-2xl font-semibold text-woodDark mb-4">Your cart is empty</h2>
-                        <p class="text-charcoal/60 mb-8">Discover our premium furniture collection and add items to your cart.</p>
+                        <h2 class="font-display text-2xl font-semibold text-woodDark mb-4">Your inquiry list is empty</h2>
+                        <p class="text-charcoal/60 mb-8">Discover our premium furniture collection and add items to your inquiry list.</p>
                         <button onclick="navigateTo('collection')" class="btn-gold px-8 py-4 rounded-full text-ebony font-semibold">Browse Collection</button>
                     </div>
                 `;
                 return;
             }
-
-            const { subtotal, gst, total } = getCartTotals();
 
             content.innerHTML = `
                 <div class="grid lg:grid-cols-3 gap-8">
@@ -1372,7 +1252,6 @@
                                             <span class="w-10 text-center font-semibold">${item.quantity}</span>
                                             <button onclick="updateQuantity(${item.id}, 1)" class="w-10 h-10 rounded-lg border border-border hover:border-gold flex items-center justify-center transition-colors">+</button>
                                         </div>
-                                        <p class="font-display text-xl font-bold text-gold">Rs ${(item.price * item.quantity).toLocaleString()}</p>
                                     </div>
                                 </div>
                             </div>
@@ -1381,33 +1260,13 @@
 
                     <div class="reveal">
                         <div class="bg-white rounded-2xl p-8 shadow-lg sticky top-32">
-                            <h3 class="font-display text-xl font-semibold text-woodDark mb-6">Order Summary</h3>
-                            <div class="space-y-4 mb-6">
-                                <div class="flex justify-between text-charcoal/70">
-                                    <span>Subtotal</span>
-                                    <span>Rs ${subtotal.toLocaleString()}</span>
-                                </div>
-                                <div class="flex justify-between text-charcoal/70">
-                                    <span>GST (18%)</span>
-                                    <span>Rs ${gst.toLocaleString()}</span>
-                                </div>
-                                <div class="flex justify-between text-charcoal/70">
-                                    <span>Shipping</span>
-                                    <span>Calculated at checkout</span>
-                                </div>
-                                <div class="flex justify-between text-xl font-bold text-woodDark pt-4 border-t border-border">
-                                    <span>Total</span>
-                                    <span>Rs ${total.toLocaleString()}</span>
-                                </div>
-                            </div>
-
+                            <h3 class="font-display text-xl font-semibold text-woodDark mb-6">Inquiry Summary</h3>
+                            <p class="text-charcoal/70 mb-6">Contact us via WhatsApp to get pricing and availability for your selected items.</p>
+                            
                             <div class="space-y-3">
-                                <button onclick="initiatePayment()" class="btn-gold w-full py-4 rounded-xl text-ebony font-semibold text-lg">
-                                    Checkout with Razorpay
-                                </button>
-                                <a href="https://wa.me/9198288383?text=${encodeURIComponent(`Hi! I'd like to place an order:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}: Rs ${(item.price * item.quantity).toLocaleString()}`).join('\n')}\n\nSubtotal: Rs ${subtotal.toLocaleString()}\nGST (18%): Rs ${gst.toLocaleString()}\nTotal: Rs ${total.toLocaleString()}`)}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
+                                <a href="https://wa.me/9198288383?text=${encodeURIComponent(`Hi! I'd like to inquire about the following items:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}`).join('\n')}\n\nPlease share pricing and availability.`)}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                    Order via WhatsApp
+                                    Send Inquiry via WhatsApp
                                 </a>
                             </div>
                         </div>
@@ -1435,44 +1294,6 @@
             }
         }
 
-        // Payment Integration (Razorpay Test Mode)
-        function initiatePayment() {
-            if (cart.length === 0) return;
-
-            const { total } = getCartTotals();
-
-            // Note: In production, you would create an order on your server first
-            // This is a demo integration showing the flow
-            const options = {
-                key: 'rzp_test_demo', // Replace with your test key
-                amount: total * 100, // Amount in paise
-                currency: 'INR',
-                name: 'WoodWorkbyTanishas',
-                description: 'Premium Handcrafted Furniture',
-                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=100&h=100&fit=crop',
-                handler: function(response) {
-                    alert('Payment Successful! Order ID: ' + response.razorpay_payment_id);
-                    cart = [];
-                    saveCart();
-                    updateCartUI();
-                    toggleCart();
-                    navigateTo('home');
-                },
-                prefill: {
-                    name: '',
-                    email: '',
-                    contact: ''
-                },
-                theme: {
-                    color: '#8B5A2B'
-                }
-            };
-
-            // For demo purposes, show alert
-            alert('Payment Integration Ready!\n\nIn production, Razorpay checkout would open here.\nTotal: Rs ' + total.toLocaleString() + '\n\nFor now, please use WhatsApp to complete your order.');
-        }
-
-        // Login Functions
         function togglePassword() {
             const input = document.getElementById('password');
             const icon = document.getElementById('eyeIcon');
@@ -1491,7 +1312,6 @@
             const password = document.getElementById('password').value;
             const error = document.getElementById('loginError');
 
-            // Demo credentials
             if (email === 'admin@woodwork.com' && password === 'admin123') {
                 error.classList.add('hidden');
                 alert('Login successful! Welcome back.');
@@ -1502,7 +1322,6 @@
             }
         });
 
-        // Scroll Animations
         function initRevealAnimations() {
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
@@ -1516,7 +1335,6 @@
             reveals.forEach(el => observer.observe(el));
         }
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -1526,7 +1344,6 @@
             }
         });
 
-        // Close modal on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeProductModal();
@@ -1536,7 +1353,6 @@
             }
         });
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             updateCartUI();
             initRevealAnimations();
