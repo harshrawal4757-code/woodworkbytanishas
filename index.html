@@ -1,128 +1,1547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wood Work by Tanisha</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoodWorkbyTanishas | From Wood To WoW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDF8F3',
+                        beige: '#F5F0E8',
+                        wood: '#8B5A2B',
+                        woodDark: '#5D3A1A',
+                        gold: '#C9A962',
+                        goldLight: '#D4AF37',
+                        charcoal: '#2D2D2D',
+                        ebony: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg: #FDF8F3;
+            --fg: #1A1A1A;
+            --muted: #8B7355;
+            --accent: #C9A962;
+            --card: #FFFCF7;
+            --border: #E8E0D5;
+            --wood: #8B5A2B;
+            --wood-dark: #5D3A1A;
+        }
 
-<link rel="stylesheet" href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 98, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(201, 169, 98, 0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Parallax */
+        .hero-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Gold Shimmer Button */
+        .btn-gold {
+            background: linear-gradient(90deg, var(--accent) 0%, #E8D5A3 50%, var(--accent) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+
+        /* Card Hover Effects */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(93, 58, 26, 0.15);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Cart Drawer */
+        .cart-drawer {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cart-drawer.open {
+            transform: translateX(0);
+        }
+
+        /* Overlay */
+        .overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+            opacity: 0;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Image Gallery */
+        .gallery-thumb {
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .gallery-thumb:hover,
+        .gallery-thumb.active {
+            opacity: 1;
+            border-color: var(--accent);
+        }
+
+        /* Floating Elements */
+        .float-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-element:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .float-element:nth-child(3) {
+            animation-delay: -4s;
+        }
+
+        /* Input Focus */
+        .input-field {
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+        }
+
+        /* Category Filter */
+        .category-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .category-btn:hover::after,
+        .category-btn.active::after {
+            width: 100%;
+        }
+
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Grain Texture Overlay */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Decorative Elements */
+        .deco-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        /* WhatsApp Button Pulse */
+        .whatsapp-pulse {
+            animation: pulse-gold 2s infinite;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
 
-<!-- NAVBAR -->
-<nav class="absolute top-0 w-full z-50 px-12 py-6 flex justify-between items-center text-white">
-<h1 class="text-3xl font-semibold">
-Wood Work <span class="italic font-light">by Tanisha</span>
-</h1>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 py-4 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-wood flex items-center justify-center">
+                    <svg class="w-5 h-5 text-cream" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l6.5 3.25L12 11l-6.5-3.25L12 4.5zM4 8.5l7 3.5v7l-7-3.5v-7zm9 10.5v-7l7-3.5v7l-7 3.5z"/>
+                    </svg>
+                </div>
+                <span class="font-display text-xl font-semibold text-woodDark hidden sm:block">WoodWorkbyTanishas</span>
+            </a>
 
-<div class="flex gap-10 uppercase text-sm tracking-wider items-center">
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" onclick="navigateTo('home')" class="text-charcoal hover:text-gold transition-colors font-medium">Home</a>
+                <a href="#" onclick="navigateTo('collection')" class="text-charcoal hover:text-gold transition-colors font-medium">Collection</a>
+                <a href="#" onclick="navigateTo('about')" class="text-charcoal hover:text-gold transition-colors font-medium">About</a>
+                <a href="#" onclick="navigateTo('login')" class="text-charcoal hover:text-gold transition-colors font-medium">Account</a>
+            </div>
 
-<a href="index.html" class="hover:text-[#C8A96A]">Home</a>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2 hover:bg-beige rounded-full transition-colors" aria-label="Open cart">
+                    <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 bg-gold text-ebony text-xs font-bold rounded-full flex items-center justify-center">0</span>
+                </button>
+                
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2" aria-label="Toggle menu">
+                    <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-<a href="collection.html" class="hover:text-[#C8A96A]">Collection</a>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-cream border-t border-border shadow-lg">
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="text-charcoal hover:text-gold transition-colors font-medium py-2">Home</a>
+                <a href="#" onclick="navigateTo('collection'); toggleMobileMenu();" class="text-charcoal hover:text-gold transition-colors font-medium py-2">Collection</a>
+                <a href="#" onclick="navigateTo('about'); toggleMobileMenu();" class="text-charcoal hover:text-gold transition-colors font-medium py-2">About</a>
+                <a href="#" onclick="navigateTo('login'); toggleMobileMenu();" class="text-charcoal hover:text-gold transition-colors font-medium py-2">Account</a>
+            </div>
+        </div>
+    </nav>
 
-<a href="cart.html" class="relative hover:text-[#C8A96A]">
-🛒
-<span id="cart-count"
-class="absolute -top-2 -right-3 bg-black text-white text-xs px-2 rounded-full">
-0
-</span>
-</a>
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- HOME PAGE -->
+        <div id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="relative min-h-screen flex items-center overflow-hidden">
+                <!-- Background with gradient overlay -->
+                <div class="absolute inset-0 hero-bg" style="background: linear-gradient(135deg, #5D3A1A 0%, #8B5A2B 50%, #C9A962 100%);">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream"></div>
+                </div>
 
-<a href="#contact" class="hover:text-[#C8A96A]">Contact</a>
+                <!-- Floating decorative elements -->
+                <div class="absolute top-20 right-10 w-32 h-32 rounded-full bg-gold/10 float-element blur-2xl"></div>
+                <div class="absolute bottom-40 left-20 w-48 h-48 rounded-full bg-wood/10 float-element blur-3xl"></div>
+                <div class="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-goldLight/10 float-element blur-xl"></div>
 
-</div>
-</nav>
+                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20 w-full">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-cream">
+                            <div class="deco-line mb-6 bg-gold"></div>
+                            <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4 animate-fade-in-up" style="animation-delay: 0.1s">Premium Handcrafted Furniture</p>
+                            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 animate-fade-in-up" style="animation-delay: 0.2s">
+                                WoodWorkby<br><span class="text-gold">Tanishas</span>
+                            </h1>
+                            <p class="text-2xl md:text-3xl font-display italic text-cream/90 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
+                                "From Wood To WoW"
+                            </p>
+                            <p class="text-cream/80 text-lg max-w-lg mb-10 animate-fade-in-up" style="animation-delay: 0.4s">
+                                Discover timeless craftsmanship with our exclusive collection of Acacia, Mango Wood, Iron Range, and modern Line Range furniture.
+                            </p>
+                            <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.5s">
+                                <button onclick="navigateTo('collection')" class="btn-gold px-8 py-4 rounded-full text-ebony font-semibold text-lg">
+                                    Shop Collection
+                                </button>
+                                <a href="https://wa.me/9198288383?text=Hello! I'm interested in your furniture collection." target="_blank" class="px-8 py-4 rounded-full border-2 border-cream text-cream font-semibold text-lg hover:bg-cream hover:text-woodDark transition-all">
+                                    WhatsApp Inquiry
+                                </a>
+                            </div>
+                        </div>
 
-<!-- HERO -->
-<section class="hero-bg h-screen flex items-center relative">
-<div class="overlay absolute inset-0"></div>
+                        <div class="relative animate-fade-in-up" style="animation-delay: 0.6s">
+                            <div class="relative aspect-square max-w-lg mx-auto">
+                                <div class="absolute inset-0 bg-gradient-to-br from-gold/20 to-wood/20 rounded-3xl transform rotate-6"></div>
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop" alt="Luxury Furniture" class="relative rounded-3xl shadow-2xl w-full h-full object-cover">
+                                <div class="absolute -bottom-6 -left-6 bg-cream p-6 rounded-2xl shadow-xl">
+                                    <p class="text-sm text-muted mb-1">Starting from</p>
+                                    <p class="font-display text-3xl font-bold text-woodDark">Rs 15,000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="relative text-white max-w-4xl px-16 fade">
+                <!-- Scroll indicator -->
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/60">
+                    <span class="text-sm tracking-widest">SCROLL</span>
+                    <div class="w-px h-12 bg-gradient-to-b from-cream/60 to-transparent"></div>
+                </div>
+            </section>
 
-<h2 class="text-6xl leading-tight mb-6">
-Crafting Timeless <br>
-<span class="italic">Wooden Elegance</span>
-</h2>
+            <!-- Featured Categories -->
+            <section class="py-24 bg-cream">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="text-center mb-16 reveal">
+                        <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Explore Our Range</p>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Featured Categories</h2>
+                        <div class="deco-line mx-auto bg-gold"></div>
+                    </div>
 
-<p class="text-lg max-w-xl mb-10">
-Discover our exquisite collection of handcrafted furniture.
-</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div onclick="filterByCategory('acacia')" class="reveal group cursor-pointer" style="transition-delay: 0.1s">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[3/4]">
+                                <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=533&fit=crop" alt="Acacia Wood" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-woodDark/80 via-wood/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="font-display text-2xl font-semibold text-cream mb-2">Acacia Wood</h3>
+                                    <p class="text-cream/80 text-sm">Durable & Elegant</p>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="flex gap-6">
-<a href="collection.html"
-class="bg-white text-black px-8 py-3 uppercase tracking-wider hover:bg-[#C8A96A] hover:text-white transition">
-Shop Collection
-</a>
-</div>
+                        <div onclick="filterByCategory('iron')" class="reveal group cursor-pointer" style="transition-delay: 0.2s">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[3/4]">
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=533&fit=crop" alt="Iron Range" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-woodDark/80 via-wood/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="font-display text-2xl font-semibold text-cream mb-2">Iron Range</h3>
+                                    <p class="text-cream/80 text-sm">Industrial Chic</p>
+                                </div>
+                            </div>
+                        </div>
 
-</div>
-</section>
+                        <div onclick="filterByCategory('line')" class="reveal group cursor-pointer" style="transition-delay: 0.3s">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[3/4]">
+                                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&h=533&fit=crop" alt="Line Range" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-woodDark/80 via-wood/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="font-display text-2xl font-semibold text-cream mb-2">Line Range</h3>
+                                    <p class="text-cream/80 text-sm">Modern Minimalist</p>
+                                </div>
+                            </div>
+                        </div>
 
-<!-- CATEGORY SECTION -->
-<section class="py-24 max-w-7xl mx-auto px-12">
+                        <div onclick="filterByCategory('mango')" class="reveal group cursor-pointer" style="transition-delay: 0.4s">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[3/4]">
+                                <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=400&h=533&fit=crop" alt="Mango Wood" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-woodDark/80 via-wood/20 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 class="font-display text-2xl font-semibold text-cream mb-2">Mango Wood</h3>
+                                    <p class="text-cream/80 text-sm">Sustainable Beauty</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<div class="grid md:grid-cols-3 gap-12 fade">
+            <!-- About Preview -->
+            <section class="py-24 bg-beige relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-wood/5 rounded-full blur-2xl"></div>
+                
+                <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="reveal">
+                            <div class="grid grid-cols-2 gap-4">
+                                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=300&h=400&fit=crop" alt="Craftsmanship" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                                <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=300&h=400&fit=crop" alt="Workshop" class="rounded-2xl shadow-lg w-full h-64 object-cover mt-8">
+                            </div>
+                        </div>
+                        
+                        <div class="reveal">
+                            <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Our Story</p>
+                            <h2 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Crafting Excellence Since 2015</h2>
+                            <div class="deco-line mb-8 bg-gold"></div>
+                            <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
+                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur. We have our own in-house production facility and have been serving the furniture industry since 2015.
+                            </p>
+                            <p class="text-charcoal/80 text-lg leading-relaxed mb-8">
+                                We specialize in handcrafted wooden furniture including Acacia Wood, Mango Wood, Iron Range, and modern Line Range collections.
+                            </p>
+                            <button onclick="navigateTo('about')" class="inline-flex items-center gap-2 text-gold font-semibold hover:gap-4 transition-all">
+                                Learn More About Us
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1588854337221-4cf9fa96059c?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[450px] object-cover">
+            <!-- Testimonials -->
+            <section class="py-24 bg-woodDark relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-1/4 left-1/4 w-64 h-64 border border-gold/30 rounded-full"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 border border-gold/20 rounded-full"></div>
+                </div>
 
-<div class="category-overlay">
-<h3 class="text-3xl mb-4">Acacia Wood</h3>
-<a href="collection.html"
-class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
-View Range
-</a>
-</div>
-</div>
+                <div class="max-w-7xl mx-auto px-6 lg:px-12 relative">
+                    <div class="text-center mb-16 reveal">
+                        <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Client Love</p>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold text-cream mb-6">What Our Clients Say</h2>
+                        <div class="deco-line mx-auto bg-gold"></div>
+                    </div>
 
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[450px] object-cover">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="reveal bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10" style="transition-delay: 0.1s">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="text-cream/90 text-lg leading-relaxed mb-6">"The craftsmanship is absolutely stunning. Every piece tells a story of dedication and artistry. Our living room has been transformed."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center font-display text-gold font-semibold">RK</div>
+                                <div>
+                                    <p class="text-cream font-semibold">Rajesh Kumar</p>
+                                    <p class="text-cream/60 text-sm">Mumbai</p>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="category-overlay">
-<h3 class="text-3xl mb-4">Iron & Line Range</h3>
-<a href="collection.html"
-class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
-View Range
-</a>
-</div>
-</div>
+                        <div class="reveal bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10" style="transition-delay: 0.2s">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="text-cream/90 text-lg leading-relaxed mb-6">"Exceptional quality and attention to detail. The Acacia wood dining table we ordered is now the centerpiece of our home. Highly recommended!"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center font-display text-gold font-semibold">PS</div>
+                                <div>
+                                    <p class="text-cream font-semibold">Priya Sharma</p>
+                                    <p class="text-cream/60 text-sm">Delhi</p>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="category-card">
-<img src="https://images.unsplash.com/photo-1598300053431-9bdf60d5dfc3?auto=format&fit=crop&w=1000&q=80"
-class="w-full h-[450px] object-cover">
+                        <div class="reveal bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10" style="transition-delay: 0.3s">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <p class="text-cream/90 text-lg leading-relaxed mb-6">"Professional service from inquiry to delivery. The Iron Range pieces I ordered are exactly what my studio needed. Will order again!"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center font-display text-gold font-semibold">AM</div>
+                                <div>
+                                    <p class="text-cream font-semibold">Amit Mehta</p>
+                                    <p class="text-cream/60 text-sm">Jaipur</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<div class="category-overlay">
-<h3 class="text-3xl mb-4">Mango Wood</h3>
-<a href="collection.html"
-class="border border-white px-6 py-2 uppercase text-sm hover:bg-white hover:text-black transition">
-View Range
-</a>
-</div>
-</div>
+            <!-- Contact Preview -->
+            <section class="py-24 bg-cream">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="bg-gradient-to-br from-woodDark to-wood rounded-3xl p-12 md:p-16 relative overflow-hidden reveal">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 w-48 h-48 bg-gold/5 rounded-full blur-2xl"></div>
 
-</div>
-</section>
+                        <div class="relative grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Get In Touch</p>
+                                <h2 class="font-display text-4xl md:text-5xl font-bold text-cream mb-6">Let's Create Your Dream Space</h2>
+                                <p class="text-cream/80 text-lg mb-8">Have a custom furniture request? We'd love to hear from you. Reach out via WhatsApp or email us directly.</p>
+                                
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="https://wa.me/9198288383?text=Hello! I'm interested in your furniture collection." target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-full font-semibold transition-all">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                        WhatsApp Us
+                                    </a>
+                                    <a href="mailto:mahadevart60@gmail.com" class="inline-flex items-center gap-3 border-2 border-cream text-cream hover:bg-cream hover:text-woodDark px-6 py-4 rounded-full font-semibold transition-all">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                        Email Us
+                                    </a>
+                                </div>
+                            </div>
 
-<!-- CONTACT -->
-<section id="contact" class="py-20 bg-[#1C1612] text-white text-center">
-<h2 class="text-3xl mb-4">Contact Us</h2>
-<p>📞 +91 98765 43210</p>
-<p>✉ hello@woodworkbytanisha.com</p>
-</section>
+                            <div class="text-cream">
+                                <div class="space-y-6">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-cream/60 text-sm">WhatsApp</p>
+                                            <p class="text-xl font-semibold">+91 9828288383</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-cream/60 text-sm">Email</p>
+                                            <p class="text-xl font-semibold">mahadevart60@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-cream/60 text-sm">Location</p>
+                                            <p class="text-xl font-semibold">Jodhpur, Rajasthan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- FOOTER -->
-<footer class="bg-black text-white text-center py-10">
-© 2026 Wood Work by Tanisha
-</footer>
+            <!-- Footer -->
+            <footer class="bg-ebony py-16">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="grid md:grid-cols-4 gap-12 mb-12">
+                        <div class="md:col-span-2">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-ebony" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l6.5 3.25L12 11l-6.5-3.25L12 4.5zM4 8.5l7 3.5v7l-7-3.5v-7zm9 10.5v-7l7-3.5v7l-7 3.5z"/>
+                                    </svg>
+                                </div>
+                                <span class="font-display text-xl font-semibold text-cream">WoodWorkbyTanishas</span>
+                            </div>
+                            <p class="text-cream/60 max-w-md mb-6">Premium handcrafted furniture from Jodhpur. Delivering timeless craftsmanship with premium quality materials and elegant designs since 2015.</p>
+                            <p class="text-gold italic font-display text-lg">"From Wood To WoW"</p>
+                        </div>
 
-<script src="script.js"></script>
+                        <div>
+                            <h4 class="font-display text-lg font-semibold text-cream mb-6">Quick Links</h4>
+                            <ul class="space-y-3">
+                                <li><a href="#" onclick="navigateTo('home')" class="text-cream/60 hover:text-gold transition-colors">Home</a></li>
+                                <li><a href="#" onclick="navigateTo('collection')" class="text-cream/60 hover:text-gold transition-colors">Collection</a></li>
+                                <li><a href="#" onclick="navigateTo('about')" class="text-cream/60 hover:text-gold transition-colors">About Us</a></li>
+                                <li><a href="#" onclick="navigateTo('login')" class="text-cream/60 hover:text-gold transition-colors">Account</a></li>
+                            </ul>
+                        </div>
 
+                        <div>
+                            <h4 class="font-display text-lg font-semibold text-cream mb-6">Categories</h4>
+                            <ul class="space-y-3">
+                                <li><a href="#" onclick="filterByCategory('acacia')" class="text-cream/60 hover:text-gold transition-colors">Acacia Wood</a></li>
+                                <li><a href="#" onclick="filterByCategory('iron')" class="text-cream/60 hover:text-gold transition-colors">Iron Range</a></li>
+                                <li><a href="#" onclick="filterByCategory('line')" class="text-cream/60 hover:text-gold transition-colors">Line Range</a></li>
+                                <li><a href="#" onclick="filterByCategory('mango')" class="text-cream/60 hover:text-gold transition-colors">Mango Wood</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="text-cream/40 text-sm">2025 WoodWorkbyTanishas. All rights reserved.</p>
+                        <p class="text-cream/40 text-sm">Crafted with care in Jodhpur, India</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- LOGIN PAGE -->
+        <div id="loginPage" class="page">
+            <section class="min-h-screen flex items-center justify-center py-24 px-6 bg-cream relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-wood/10 rounded-full blur-2xl"></div>
+
+                <div class="w-full max-w-md relative reveal">
+                    <div class="text-center mb-10">
+                        <div class="w-16 h-16 rounded-full bg-wood flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-cream" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l6.5 3.25L12 11l-6.5-3.25L12 4.5zM4 8.5l7 3.5v7l-7-3.5v-7zm9 10.5v-7l7-3.5v7l-7 3.5z"/>
+                            </svg>
+                        </div>
+                        <h1 class="font-display text-3xl font-bold text-woodDark mb-2">Welcome Back</h1>
+                        <p class="text-charcoal/60">Sign in to your account</p>
+                    </div>
+
+                    <form id="loginForm" class="bg-white rounded-3xl p-8 shadow-xl border border-border">
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-charcoal mb-2">Email Address</label>
+                            <input type="email" id="email" required class="input-field w-full px-4 py-3 rounded-xl bg-beige outline-none" placeholder="Enter your email">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="password" class="block text-sm font-medium text-charcoal mb-2">Password</label>
+                            <div class="relative">
+                                <input type="password" id="password" required class="input-field w-full px-4 py-3 rounded-xl bg-beige outline-none pr-12" placeholder="Enter your password">
+                                <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-charcoal/40 hover:text-charcoal transition-colors">
+                                    <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between mb-8">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 rounded border-border text-gold focus:ring-gold">
+                                <span class="text-sm text-charcoal/70">Remember me</span>
+                            </label>
+                            <a href="#" class="text-sm text-gold hover:underline">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" class="btn-gold w-full py-4 rounded-xl text-ebony font-semibold text-lg">
+                            Sign In
+                        </button>
+
+                        <p id="loginError" class="hidden text-red-500 text-center mt-4 text-sm"></p>
+
+                        <p class="text-center mt-6 text-charcoal/60">
+                            Don't have an account? <a href="#" class="text-gold font-medium hover:underline">Contact us</a>
+                        </p>
+                    </form>
+
+                    <p class="text-center mt-6 text-charcoal/40 text-sm">Demo: admin@woodwork.com / admin123</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- COLLECTION PAGE -->
+        <div id="collectionPage" class="page">
+            <section class="pt-32 pb-24 bg-cream min-h-screen">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="text-center mb-12 reveal">
+                        <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Discover Our Range</p>
+                        <h1 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Our Collection</h1>
+                        <div class="deco-line mx-auto bg-gold"></div>
+                    </div>
+
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+                        <button onclick="filterProducts('all')" class="category-btn px-6 py-3 text-charcoal font-medium active" data-category="all">All Products</button>
+                        <button onclick="filterProducts('acacia')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="acacia">Acacia Wood</button>
+                        <button onclick="filterProducts('iron')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="iron">Iron Range</button>
+                        <button onclick="filterProducts('line')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="line">Line Range</button>
+                        <button onclick="filterProducts('mango')" class="category-btn px-6 py-3 text-charcoal font-medium" data-category="mango">Mango Wood</button>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div id="productsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Products will be rendered here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PRODUCT DETAIL PAGE -->
+        <div id="productPage" class="page">
+            <section class="pt-32 pb-24 bg-cream min-h-screen">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div id="productDetail">
+                        <!-- Product details will be rendered here -->
+                    </div>
+
+                    <!-- Related Products -->
+                    <div class="mt-24">
+                        <h2 class="font-display text-3xl font-bold text-woodDark mb-8">You May Also Like</h2>
+                        <div id="relatedProducts" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Related products will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CART PAGE -->
+        <div id="cartPage" class="page">
+            <section class="pt-32 pb-24 bg-cream min-h-screen">
+                <div class="max-w-5xl mx-auto px-6 lg:px-12">
+                    <div class="text-center mb-12 reveal">
+                        <h1 class="font-display text-4xl md:text-5xl font-bold text-woodDark mb-6">Your Cart</h1>
+                        <div class="deco-line mx-auto bg-gold"></div>
+                    </div>
+
+                    <div id="cartContent">
+                        <!-- Cart items will be rendered here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="aboutPage" class="page">
+            <!-- Hero -->
+            <section class="pt-32 pb-16 bg-woodDark relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-1/4 left-1/4 w-64 h-64 border border-gold/30 rounded-full"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 border border-gold/20 rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center relative">
+                    <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4 reveal">About Us</p>
+                    <h1 class="font-display text-4xl md:text-6xl font-bold text-cream mb-6 reveal">Our Story</h1>
+                    <p class="text-cream/80 text-xl max-w-2xl mx-auto reveal">Crafting timeless furniture pieces that transform houses into homes since 2015.</p>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section class="py-24 bg-cream">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div class="reveal">
+                            <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=800&fit=crop" alt="Our Workshop" class="rounded-3xl shadow-2xl w-full">
+                        </div>
+
+                        <div class="reveal">
+                            <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Our Heritage</p>
+                            <h2 class="font-display text-4xl font-bold text-woodDark mb-6">Mahadev Art</h2>
+                            <div class="deco-line mb-8 bg-gold"></div>
+
+                            <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
+                                Mahadev Art is a premium furniture manufacturing company based in Jodhpur, the cultural heart of Rajasthan. We have our own in-house production facility and have been serving the furniture industry since 2015.
+                            </p>
+
+                            <p class="text-charcoal/80 text-lg leading-relaxed mb-6">
+                                We specialize in handcrafted wooden furniture including Acacia Wood, Mango Wood, Iron Range, and modern Line Range collections. Our mission is to deliver timeless craftsmanship with premium quality materials and elegant designs.
+                            </p>
+
+                            <p class="text-charcoal/80 text-lg leading-relaxed">
+                                Every piece that leaves our workshop carries the legacy of traditional craftsmanship blended with contemporary aesthetics. We take pride in creating furniture that becomes a part of your family's story.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values -->
+            <section class="py-24 bg-beige">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div class="text-center mb-16 reveal">
+                        <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4">Why Choose Us</p>
+                        <h2 class="font-display text-4xl font-bold text-woodDark mb-6">Our Values</h2>
+                        <div class="deco-line mx-auto bg-gold"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="reveal bg-cream rounded-2xl p-8 shadow-lg" style="transition-delay: 0.1s">
+                            <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-semibold text-woodDark mb-4">Premium Quality</h3>
+                            <p class="text-charcoal/70 leading-relaxed">We use only the finest materials and employ skilled artisans who take pride in their craft, ensuring every piece meets our exacting standards.</p>
+                        </div>
+
+                        <div class="reveal bg-cream rounded-2xl p-8 shadow-lg" style="transition-delay: 0.2s">
+                            <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-semibold text-woodDark mb-4">Handcrafted Love</h3>
+                            <p class="text-charcoal/70 leading-relaxed">Each piece is handmade with care and attention to detail. Our artisans pour their heart into creating furniture that tells a story.</p>
+                        </div>
+
+                        <div class="reveal bg-cream rounded-2xl p-8 shadow-lg" style="transition-delay: 0.3s">
+                            <div class="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl font-semibold text-woodDark mb-4">Sustainable</h3>
+                            <p class="text-charcoal/70 leading-relaxed">We're committed to sustainable practices, using responsibly sourced wood and eco-friendly finishes that are safe for your family and the planet.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section class="py-24 bg-woodDark">
+                <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+                    <p class="text-gold font-medium tracking-widest uppercase text-sm mb-4 reveal">Get In Touch</p>
+                    <h2 class="font-display text-4xl font-bold text-cream mb-8 reveal">Ready to Transform Your Space?</h2>
+                    <p class="text-cream/80 text-lg mb-12 reveal">Reach out to us for custom furniture requests, bulk orders, or any inquiries.</p>
+
+                    <div class="flex flex-wrap justify-center gap-6 reveal">
+                        <a href="https://wa.me/9198288383" target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            +91 9828288383
+                        </a>
+                        <a href="mailto:mahadevart60@gmail.com" class="inline-flex items-center gap-3 border-2 border-gold text-gold hover:bg-gold hover:text-ebony px-8 py-4 rounded-full font-semibold transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            mahadevart60@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cartOverlay" class="overlay fixed inset-0 bg-ebony/50 z-50" onclick="toggleCart()"></div>
+    <div id="cartDrawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-cream z-50 shadow-2xl flex flex-col">
+        <div class="p-6 border-b border-border flex items-center justify-between">
+            <h2 class="font-display text-2xl font-semibold text-woodDark">Your Cart</h2>
+            <button onclick="toggleCart()" class="p-2 hover:bg-beige rounded-full transition-colors" aria-label="Close cart">
+                <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="cartDrawerItems" class="flex-1 overflow-y-auto p-6">
+            <!-- Cart items will be rendered here -->
+        </div>
+
+        <div id="cartDrawerFooter" class="p-6 border-t border-border hidden">
+            <div class="space-y-3 mb-6">
+                <div class="flex justify-between text-charcoal/70">
+                    <span>Subtotal</span>
+                    <span id="drawerSubtotal">Rs 0</span>
+                </div>
+                <div class="flex justify-between text-charcoal/70">
+                    <span>GST (18%)</span>
+                    <span id="drawerGst">Rs 0</span>
+                </div>
+                <div class="flex justify-between text-lg font-semibold text-woodDark pt-3 border-t border-border">
+                    <span>Total</span>
+                    <span id="drawerTotal">Rs 0</span>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <button onclick="initiatePayment()" class="btn-gold w-full py-4 rounded-xl text-ebony font-semibold">
+                    Checkout with Razorpay
+                </button>
+                <a id="drawerWhatsApp" href="#" target="_blank" class="block w-full text-center bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
+                    Order via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="overlay fixed inset-0 bg-ebony/80 z-50 flex items-center justify-center p-4">
+        <div class="bg-cream rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative animate-fade-in">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 p-2 bg-beige hover:bg-gold/20 rounded-full transition-colors z-10" aria-label="Close modal">
+                <svg class="w-6 h-6 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div id="modalContent">
+                <!-- Modal content will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize variables first
+        let cart = JSON.parse(localStorage.getItem('woodworkCart')) || [];
+        let currentProduct = null;
+
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Royal Acacia Dining Table",
+                category: "acacia",
+                price: 45000,
+                image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop"
+                ],
+                description: "A stunning handcrafted dining table made from premium Acacia wood. Features natural grain patterns and a smooth finish that highlights the wood's natural beauty. Seats 6-8 comfortably.",
+                specs: ["Dimensions: 180cm x 90cm x 75cm", "Material: Solid Acacia Wood", "Finish: Natural Walnut", "Weight: 45kg"]
+            },
+            {
+                id: 2,
+                name: "Industrial Iron Bookshelf",
+                category: "iron",
+                price: 28000,
+                image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop"
+                ],
+                description: "A robust industrial-style bookshelf combining raw iron framework with wooden shelves. Perfect for modern lofts and contemporary spaces seeking an edgy aesthetic.",
+                specs: ["Dimensions: 120cm x 35cm x 180cm", "Material: Iron Frame + Mango Wood", "Finish: Matte Black Iron", "5 Shelves"]
+            },
+            {
+                id: 3,
+                name: "Minimalist Line Coffee Table",
+                category: "line",
+                price: 18000,
+                image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=600&h=600&fit=crop"
+                ],
+                description: "Clean lines meet functionality in this minimalist coffee table. The Line Range piece features sleek proportions and hidden storage compartments.",
+                specs: ["Dimensions: 100cm x 50cm x 40cm", "Material: Mango Wood", "Finish: Natural Oak", "Hidden Storage"]
+            },
+            {
+                id: 4,
+                name: "Mango Wood Sideboard",
+                category: "mango",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop"
+                ],
+                description: "An elegant sideboard crafted from sustainable Mango wood. Features distinctive grain patterns with ample storage behind soft-close cabinet doors.",
+                specs: ["Dimensions: 150cm x 45cm x 80cm", "Material: Solid Mango Wood", "Finish: Honey Oak", "Soft-close Doors"]
+            },
+            {
+                id: 5,
+                name: "Acacia Wood Bed Frame",
+                category: "acacia",
+                price: 65000,
+                image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop"
+                ],
+                description: "A majestic king-size bed frame in solid Acacia wood. The headboard showcases intricate hand-carved details inspired by traditional Jodhpur craftsmanship.",
+                specs: ["Dimensions: 200cm x 180cm x 120cm", "Material: Solid Acacia Wood", "Finish: Dark Walnut", "King Size"]
+            },
+            {
+                id: 6,
+                name: "Iron Bar Stool Set",
+                category: "iron",
+                price: 22000,
+                image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&h=600&fit=crop"
+                ],
+                description: "Set of 2 industrial bar stools with iron frames and wooden seats. Adjustable height mechanism and footrest for ultimate comfort.",
+                specs: ["Dimensions: 45cm x 45cm x 75-95cm", "Material: Iron + Mango Wood", "Finish: Matte Black", "Adjustable Height"]
+            },
+            {
+                id: 7,
+                name: "Line Console Table",
+                category: "line",
+                price: 15000,
+                image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop"
+                ],
+                description: "A slim profile console table perfect for entryways. The Line Range design emphasizes clean geometric shapes and functional elegance.",
+                specs: ["Dimensions: 120cm x 35cm x 80cm", "Material: Mango Wood", "Finish: White Oak", "Wall-mounted Option"]
+            },
+            {
+                id: 8,
+                name: "Mango Wood Dining Chairs (Set of 4)",
+                category: "mango",
+                price: 32000,
+                image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=600&fit=crop"
+                ],
+                description: "Set of 4 dining chairs in sustainably sourced Mango wood. Ergonomic design with woven rush seats for comfort during long dinners.",
+                specs: ["Dimensions: 45cm x 50cm x 85cm each", "Material: Mango Wood + Rush", "Finish: Natural Teak", "Set of 4"]
+            },
+            {
+                id: 9,
+                name: "Acacia TV Unit",
+                category: "acacia",
+                price: 28000,
+                image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
+                images: [
+                    "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=600&fit=crop"
+                ],
+                description: "A spacious entertainment unit in Acacia wood with cable management and adjustable shelving. Perfect for TVs up to 65 inches.",
+                specs: ["Dimensions: 180cm x 45cm x 50cm", "Material: Acacia Wood", "Finish: Walnut", "Cable Management"]
+            }
+        ];
+
+        // Navigation Functions
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(page + 'Page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            if (page === 'collection') {
+                renderProducts();
+            } else if (page === 'cart') {
+                renderCartPage();
+            }
+
+            initRevealAnimations();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Product Functions
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            grid.innerHTML = filtered.map((product, index) => `
+                <div class="product-card reveal bg-white rounded-2xl overflow-hidden shadow-lg" style="transition-delay: ${index * 0.1}s" data-category="${product.category}">
+                    <div class="relative overflow-hidden aspect-square">
+                        <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-gold/90 text-ebony text-xs font-semibold rounded-full uppercase">${product.category}</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold text-woodDark mb-2">${product.name}</h3>
+                        <p class="text-charcoal/60 text-sm mb-4 line-clamp-2">${product.description}</p>
+                        <p class="font-display text-2xl font-bold text-gold mb-4">Rs ${product.price.toLocaleString()}</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="addToCart(${product.id})" class="flex-1 py-3 bg-wood hover:bg-woodDark text-cream rounded-lg font-medium transition-colors">
+                                Add to Cart
+                            </button>
+                            <button onclick="openProductModal(${product.id})" class="px-4 py-3 border border-border hover:border-gold hover:text-gold rounded-lg transition-colors">
+                                View
+                            </button>
+                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)} (Rs ${product.price.toLocaleString()}). Please share more details." target="_blank" class="px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            initRevealAnimations();
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === category);
+            });
+            renderProducts(category);
+        }
+
+        function filterByCategory(category) {
+            navigateTo('collection');
+            setTimeout(() => filterProducts(category), 100);
+        }
+
+        // Product Modal
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentProduct = product;
+            const modal = document.getElementById('productModal');
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-6 bg-beige">
+                        <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+                            <img id="mainModalImage" src="${product.images[0]}" alt="${product.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex gap-2">
+                            ${product.images.map((img, i) => `
+                                <button onclick="changeModalImage('${img}')" class="gallery-thumb w-20 h-20 rounded-lg overflow-hidden border-2 ${i === 0 ? 'border-gold opacity-100' : 'border-transparent'}">
+                                    <img src="${img}" alt="Thumbnail" class="w-full h-full object-cover">
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <span class="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full uppercase mb-4">${product.category}</span>
+                        <h2 class="font-display text-3xl font-bold text-woodDark mb-4">${product.name}</h2>
+                        <p class="font-display text-3xl font-bold text-gold mb-6">Rs ${product.price.toLocaleString()}</p>
+                        <p class="text-charcoal/70 leading-relaxed mb-6">${product.description}</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-woodDark mb-3">Specifications</h4>
+                            <ul class="space-y-2">
+                                ${product.specs.map(spec => `<li class="flex items-center gap-2 text-sm text-charcoal/70"><svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>${spec}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="addToCart(${product.id}); closeProductModal();" class="flex-1 py-4 bg-wood hover:bg-woodDark text-cream rounded-xl font-semibold transition-colors">
+                                Add to Cart
+                            </button>
+                            <a href="https://wa.me/9198288383?text=Hi! I'm interested in ${encodeURIComponent(product.name)} (Rs ${product.price.toLocaleString()}). Please share more details." target="_blank" class="flex items-center justify-center gap-2 px-6 py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-semibold transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeModalImage(src) {
+            document.getElementById('mainModalImage').src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+                thumb.classList.toggle('border-gold', thumb.querySelector('img').src === src);
+                thumb.classList.toggle('opacity-100', thumb.querySelector('img').src === src);
+            });
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartUI();
+            toggleCart();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCartUI();
+            renderCartPage();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                    return;
+                }
+            }
+            saveCart();
+            updateCartUI();
+            renderCartPage();
+        }
+
+        function saveCart() {
+            localStorage.setItem('woodworkCart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            renderCartDrawer();
+        }
+
+        function getCartTotals() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const gst = Math.round(subtotal * 0.18);
+            const total = subtotal + gst;
+            return { subtotal, gst, total };
+        }
+
+        function renderCartDrawer() {
+            const drawerItems = document.getElementById('cartDrawerItems');
+            const drawerFooter = document.getElementById('cartDrawerFooter');
+
+            if (cart.length === 0) {
+                drawerItems.innerHTML = `
+                    <div class="text-center py-12">
+                        <svg class="w-16 h-16 text-charcoal/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        <p class="text-charcoal/60 mb-4">Your cart is empty</p>
+                        <button onclick="toggleCart(); navigateTo('collection');" class="text-gold font-medium hover:underline">Browse Collection</button>
+                    </div>
+                `;
+                drawerFooter.classList.add('hidden');
+                return;
+            }
+
+            const { subtotal, gst, total } = getCartTotals();
+
+            drawerItems.innerHTML = cart.map(item => `
+                <div class="flex gap-4 mb-4 pb-4 border-b border-border">
+                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-medium text-woodDark text-sm">${item.name}</h4>
+                        <p class="text-gold font-semibold">Rs ${item.price.toLocaleString()}</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 rounded border border-border hover:border-gold flex items-center justify-center">-</button>
+                            <span class="w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 rounded border border-border hover:border-gold flex items-center justify-center">+</button>
+                            <button onclick="removeFromCart(${item.id})" class="ml-auto text-red-500 text-sm hover:underline">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('drawerSubtotal').textContent = `Rs ${subtotal.toLocaleString()}`;
+            document.getElementById('drawerGst').textContent = `Rs ${gst.toLocaleString()}`;
+            document.getElementById('drawerTotal').textContent = `Rs ${total.toLocaleString()}`;
+
+            const orderText = encodeURIComponent(`Hi! I'd like to place an order:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}: Rs ${(item.price * item.quantity).toLocaleString()}`).join('\n')}\n\nSubtotal: Rs ${subtotal.toLocaleString()}\nGST (18%): Rs ${gst.toLocaleString()}\nTotal: Rs ${total.toLocaleString()}`);
+            document.getElementById('drawerWhatsApp').href = `https://wa.me/9198288383?text=${orderText}`;
+
+            drawerFooter.classList.remove('hidden');
+        }
+
+        function renderCartPage() {
+            const content = document.getElementById('cartContent');
+
+            if (cart.length === 0) {
+                content.innerHTML = `
+                    <div class="text-center py-16 reveal">
+                        <svg class="w-24 h-24 text-charcoal/20 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        <h2 class="font-display text-2xl font-semibold text-woodDark mb-4">Your cart is empty</h2>
+                        <p class="text-charcoal/60 mb-8">Discover our premium furniture collection and add items to your cart.</p>
+                        <button onclick="navigateTo('collection')" class="btn-gold px-8 py-4 rounded-full text-ebony font-semibold">Browse Collection</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const { subtotal, gst, total } = getCartTotals();
+
+            content.innerHTML = `
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 space-y-4 reveal">
+                        ${cart.map(item => `
+                            <div class="bg-white rounded-2xl p-6 shadow-lg flex flex-col sm:flex-row gap-6">
+                                <img src="${item.image}" alt="${item.name}" class="w-full sm:w-32 h-32 rounded-xl object-cover">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-display text-lg font-semibold text-woodDark">${item.name}</h3>
+                                        <button onclick="removeFromCart(${item.id})" class="text-charcoal/40 hover:text-red-500 transition-colors">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                        </button>
+                                    </div>
+                                    <p class="text-charcoal/60 text-sm mb-4">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</p>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center gap-3">
+                                            <button onclick="updateQuantity(${item.id}, -1)" class="w-10 h-10 rounded-lg border border-border hover:border-gold flex items-center justify-center transition-colors">-</button>
+                                            <span class="w-10 text-center font-semibold">${item.quantity}</span>
+                                            <button onclick="updateQuantity(${item.id}, 1)" class="w-10 h-10 rounded-lg border border-border hover:border-gold flex items-center justify-center transition-colors">+</button>
+                                        </div>
+                                        <p class="font-display text-xl font-bold text-gold">Rs ${(item.price * item.quantity).toLocaleString()}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="reveal">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg sticky top-32">
+                            <h3 class="font-display text-xl font-semibold text-woodDark mb-6">Order Summary</h3>
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between text-charcoal/70">
+                                    <span>Subtotal</span>
+                                    <span>Rs ${subtotal.toLocaleString()}</span>
+                                </div>
+                                <div class="flex justify-between text-charcoal/70">
+                                    <span>GST (18%)</span>
+                                    <span>Rs ${gst.toLocaleString()}</span>
+                                </div>
+                                <div class="flex justify-between text-charcoal/70">
+                                    <span>Shipping</span>
+                                    <span>Calculated at checkout</span>
+                                </div>
+                                <div class="flex justify-between text-xl font-bold text-woodDark pt-4 border-t border-border">
+                                    <span>Total</span>
+                                    <span>Rs ${total.toLocaleString()}</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <button onclick="initiatePayment()" class="btn-gold w-full py-4 rounded-xl text-ebony font-semibold text-lg">
+                                    Checkout with Razorpay
+                                </button>
+                                <a href="https://wa.me/9198288383?text=${encodeURIComponent(`Hi! I'd like to place an order:\n\n${cart.map(item => `- ${item.name} x ${item.quantity}: Rs ${(item.price * item.quantity).toLocaleString()}`).join('\n')}\n\nSubtotal: Rs ${subtotal.toLocaleString()}\nGST (18%): Rs ${gst.toLocaleString()}\nTotal: Rs ${total.toLocaleString()}`)}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-semibold transition-colors">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                    Order via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            initRevealAnimations();
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            const isOpen = drawer.classList.contains('open');
+
+            if (isOpen) {
+                drawer.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                drawer.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                renderCartDrawer();
+            }
+        }
+
+        // Payment Integration (Razorpay Test Mode)
+        function initiatePayment() {
+            if (cart.length === 0) return;
+
+            const { total } = getCartTotals();
+
+            // Note: In production, you would create an order on your server first
+            // This is a demo integration showing the flow
+            const options = {
+                key: 'rzp_test_demo', // Replace with your test key
+                amount: total * 100, // Amount in paise
+                currency: 'INR',
+                name: 'WoodWorkbyTanishas',
+                description: 'Premium Handcrafted Furniture',
+                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=100&h=100&fit=crop',
+                handler: function(response) {
+                    alert('Payment Successful! Order ID: ' + response.razorpay_payment_id);
+                    cart = [];
+                    saveCart();
+                    updateCartUI();
+                    toggleCart();
+                    navigateTo('home');
+                },
+                prefill: {
+                    name: '',
+                    email: '',
+                    contact: ''
+                },
+                theme: {
+                    color: '#8B5A2B'
+                }
+            };
+
+            // For demo purposes, show alert
+            alert('Payment Integration Ready!\n\nIn production, Razorpay checkout would open here.\nTotal: Rs ' + total.toLocaleString() + '\n\nFor now, please use WhatsApp to complete your order.');
+        }
+
+        // Login Functions
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('eyeIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
+            } else {
+                input.type = 'password';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('loginError');
+
+            // Demo credentials
+            if (email === 'admin@woodwork.com' && password === 'admin123') {
+                error.classList.add('hidden');
+                alert('Login successful! Welcome back.');
+                navigateTo('home');
+            } else {
+                error.textContent = 'Invalid credentials. Try admin@woodwork.com / admin123';
+                error.classList.remove('hidden');
+            }
+        });
+
+        // Scroll Animations
+        function initRevealAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProductModal();
+                if (document.getElementById('cartDrawer').classList.contains('open')) {
+                    toggleCart();
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartUI();
+            initRevealAnimations();
+            renderProducts();
+        });
+    </script>
 </body>
 </html>
